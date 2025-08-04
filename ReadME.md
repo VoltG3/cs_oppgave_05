@@ -6,6 +6,10 @@ ___
 - Linux
 - Docker
 
+```sh
+dotnet add package MySql.Data
+```
+
 ## Docker
 #### Create MYSQL container
 ```sh
