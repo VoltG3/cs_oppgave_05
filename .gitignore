@@ -1,0 +1,16 @@
+bin/
+obj/
+/packages/
+riderModule.iml
+/_ReSharper.Caches/
+TestResults/
+.idea/
+*.sln.iml
+*.DotSettings.user
+*.log
+*.tmp
+*.bak
+*.pid
+*.cache
+.DS_Store
+Thumbs.db
