@@ -8,6 +8,8 @@ ___
 
 ```sh
 dotnet add package MySql.Data
+dotnet add package Spectre.Console
+dotnet add package Spectre.Console.Cli
 ```
 
 ## Docker

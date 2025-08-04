@@ -1,4 +1,5 @@
 using MySql.Data.MySqlClient;
+using Spectre.Console;
 
 namespace cs_oppgave_05.tests.MYSQLconnection
 {
@@ -17,11 +18,13 @@ namespace cs_oppgave_05.tests.MYSQLconnection
             {
                 using var connection = new MySqlConnection(connectionCredentials);
                 connection.Open();
-                Console.WriteLine("MYSQL Connection successful");
+                //Console.WriteLine("MYSQL Connection successful");
+                AnsiConsole.MarkupLine("[bold green]MYSQL Connection successful[/]");
             }
             catch (Exception e)
             {
-                Console.WriteLine("MYSQL Connection failed");
+                //Console.WriteLine("MYSQL Connection failed");
+                AnsiConsole.MarkupLine("[bold red]MYSQL Connection failed[/]");
                 Console.WriteLine(e);
                 throw;
             }
