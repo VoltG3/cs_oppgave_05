@@ -1,0 +1,31 @@
+## cs_oppgave_05 
+#### C# / CRUD / MYSQL / API
+___
+
+#### Dependencies
+- Linux
+- Docker
+
+## Docker
+#### Create MYSQL container
+```sh
+docker create
+ --name oppgave_05
+ -e MYSQL_ROOT_PASSWORD=rootpassword
+ -e MYSQL_DATABASE=mydb
+ -e MYSQL_USER=oppgave_05
+ -e MYSQL_PASSWORD=password
+ -p 3307:3306
+ mysql:8.0
+```
+#### Basic Commands
+```sh
+docker images
+docker ps
+docker ps -a 
+sudo lsof -i :3306 
+docker start oppgave_05 
+docker stop oppgave_05
+docker logs oppgave_05
+```
+
