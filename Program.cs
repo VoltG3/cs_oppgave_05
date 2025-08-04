@@ -1,3 +1,10 @@
-﻿// See https://aka.ms/new-console-template for more information
+﻿using cs_oppgave_05.tests.MYSQLconnection;
 
-Console.WriteLine("Hello, World!");
+class Program
+{
+    static void Main(string[] args)
+    {
+        Console.Clear();
+        MysqlConnectionTester.TestConnection();
+    }
+}
