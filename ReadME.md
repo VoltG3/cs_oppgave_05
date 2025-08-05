@@ -54,3 +54,11 @@ USE movies;
 SHOW TABLES;
 DESCRIBE <tablename>;
 ```
+
+#### DBeaver
+```sh
+if error: Public Key Retrieval is not allowed
+
+ALTER USER 'all'@'%' IDENTIFIED WITH mysql_native_password BY 'mysql';
+FLUSH PRIVILEGES;
+```
