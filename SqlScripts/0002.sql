@@ -1,0 +1,4 @@
+CREATE TABLE IF NOT EXISTS test_table2 (
+    Id INT PRIMARY KEY,
+    Name VARCHAR(50)
+);

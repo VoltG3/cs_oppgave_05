@@ -1,4 +1,5 @@
-﻿using cs_oppgave_05.tests.MYSQLconnection;
+﻿using cs_oppgave_05.Tests.MYSQLConnection;
+using cs_oppgave_05.MYSQLMigration;
 
 //      Task: RestAPI with Controllers (MVC)
 //
@@ -14,7 +15,18 @@ class Program
 {
     static void Main(string[] args)
     {
+        string connectionString = "" +
+                                  "Server=localhost;" +
+                                  "Port=3309;" +
+                                  "Database=movies;" +
+                                  "User=all;" +
+                                  "Password=mysql;";
+        
         Console.Clear();
-        MysqlConnectionTester.TestConnection();
+        MysqlConnectionTester.TestConnection(connectionString);
+        // if ok, then next:
+        
+        Migration.Run(connectionString);
+        
     }
 }
