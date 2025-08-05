@@ -2,9 +2,14 @@
 #### C# / CRUD / MYSQL / API
 ___
 
+| Tags             | Chaper                          |
+|:-----------------|:--------------------------------|
+| [oppgave05_V1](https://github.com/VoltG3/cs_oppgave_05/tags) | [SQL Migration](#SQL_Migration) |
+
 #### Dependencies
 - Linux
 - Docker
+- DBeaver
 
 ```sh
 dotnet add package MySql.Data
@@ -12,8 +17,7 @@ dotnet add package Spectre.Console
 dotnet add package Spectre.Console.Cli
 ```
 
-## Docker
-#### Create MYSQL container
+#### Docker MYSQL container
 ```sh
 docker create
  --name mysql_movies
@@ -62,3 +66,5 @@ if error: Public Key Retrieval is not allowed
 ALTER USER 'all'@'%' IDENTIFIED WITH mysql_native_password BY 'mysql';
 FLUSH PRIVILEGES;
 ```
+
+# SQL Migration
