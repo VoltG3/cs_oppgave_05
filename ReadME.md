@@ -1,12 +1,12 @@
 ## cs_oppgave_05 
 #### C# / CRUD / MYSQL / API
 
-| Tags             | Chaper              |
-|:-----------------|:--------------------|
-| [oppgave05_V1] | [SQL Migration](#1) |
-| [oppgave05_V1] | [SQL Migration](#2) |
-| [oppgave05_V1] | [SQL Migration](#3) |
-| [oppgave05_V1] | [SQL Migration](#4) |
+| Tags             | Chaper                          |
+|:-----------------|:--------------------------------|
+| [oppgave05_V1] | [SQL Migration](#sql-migration) |
+| [oppgave05_V1] | [SQL Migration](#2)             |
+| [oppgave05_V1] | [SQL Migration](#3)             |
+| [oppgave05_V1] | [SQL Migration](#4)             |
 
 #### Dependencies
 - Linux
@@ -21,7 +21,7 @@ dotnet add package Spectre.Console.Cli
 
 
 
-#### Create Docker MYSQL container
+#### Docker MYSQL container
 ```sh
 docker create
  --name mysql_movies
@@ -71,7 +71,4 @@ ALTER USER 'all'@'%' IDENTIFIED WITH mysql_native_password BY 'mysql';
 FLUSH PRIVILEGES;
 ```
 
-# 1
-#### 2 
-#### 3.3
-#### 4 some things
+#### SQL Migration
