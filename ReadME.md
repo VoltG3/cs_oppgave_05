@@ -1,12 +1,11 @@
-## cs_oppgave_05 
-#### C# / CRUD / MYSQL / API
+#### CS_OPPGAVE_05 / C# / CRUD / MYSQL / API
 
-| Tags             | Chaper                          |
-|:-----------------|:--------------------------------|
-| [oppgave05_V1] | [SQL Migration](#sql-migration) |
-| [oppgave05_V1] | [SQL Migration](#2)             |
-| [oppgave05_V1] | [SQL Migration](#3)             |
-| [oppgave05_V1] | [SQL Migration](#4)             |
+| Tags           | Chaper                                                           |
+|:---------------|:-----------------------------------------------------------------|
+| [oppgave05_V1] | [SQL Migration](#sql-migration)                                  |
+|                | [Docker MYSQL container](#docker-mysql-container)                |
+|                | [C# Register path for sql script](#register-path-for-sql-script) |
+|                | [DBeaver](#dbeaver)                                              |
 
 #### Dependencies
 - Linux
@@ -20,7 +19,7 @@ dotnet add package Spectre.Console.Cli
 ```
 
 
-
+### SQL Migration
 #### Docker MYSQL container
 ```sh
 docker create
@@ -44,7 +43,15 @@ docker logs oppgave_05
 docker exec -it mysql_movies mysql -u root -p
 ```
 
-#### C# Register path for sql script
+#### Reminder: Basic SQL Commands
+```sql
+SHOW DATABASES;
+USE movies;
+SHOW TABLES;
+DESCRIBE <tablename>;
+```
+
+#### Register path for sql script
 ```sh
 cs_oppgave_05.csproj
 
@@ -55,14 +62,6 @@ cs_oppgave_05.csproj
 </ItemGroup>
 ```
 
-#### Reminder: Basic SQL Commands
-```sql
-SHOW DATABASES;
-USE movies;
-SHOW TABLES;
-DESCRIBE <tablename>;
-```
-
 #### DBeaver
 ```sh
 if error: Public Key Retrieval is not allowed
@@ -70,5 +69,3 @@ if error: Public Key Retrieval is not allowed
 ALTER USER 'all'@'%' IDENTIFIED WITH mysql_native_password BY 'mysql';
 FLUSH PRIVILEGES;
 ```
-
-#### SQL Migration
