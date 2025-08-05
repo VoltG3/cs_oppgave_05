@@ -1,4 +1,27 @@
-CREATE TABLE IF NOT EXISTS test_table2 (
-    Id INT PRIMARY KEY,
-    Name VARCHAR(50)
-);
+-- 0002.sql – Seeds for table 0001.sql
+
+INSERT IGNORE INTO actor (act_id, act_fname, act_lname, act_gender) VALUES
+(101, 'James', 'Stewart', 'M'),
+(102, 'Deborah', 'Kerr', 'F'),
+(103, 'Peter', 'OToole', 'M'),
+(104, 'Robert', 'De Niro', 'M'),
+(105, 'F. Murray', 'Abraham', 'M'),
+(106, 'Harrison', 'Ford', 'M'),
+(107, 'Nicole', 'Kidman', 'F'),
+(108, 'Stephen', 'Baldwin', 'M'),
+(109, 'Jack', 'Nicholson', 'M'),
+(110, 'Mark', 'Wahlberg', 'M'),
+(111, 'Woody', 'Allen', 'M'),
+(112, 'Claire', 'Danes', 'F'),
+(113, 'Tim', 'Robbins', 'M'),
+(114, 'Kevin', 'Spacey', 'M'),
+(115, 'Kate', 'Winslet', 'F'),
+(116, 'Robin', 'Williams', 'M'),
+(117, 'Jon', 'Voight', 'M'),
+(118, 'Ewan', 'McGregor', 'M'),
+(119, 'Christian', 'Bale', 'M'),
+(120, 'Maggie', 'Gyllenhaal', 'F'),
+(121, 'Dev', 'Patel', 'M'),
+(122, 'Sigourney', 'Weaver', 'F'),
+(123, 'David', 'Aston', 'M'),
+(124, 'Ali', 'Astin', 'F');
