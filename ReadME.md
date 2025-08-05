@@ -67,4 +67,4 @@ ALTER USER 'all'@'%' IDENTIFIED WITH mysql_native_password BY 'mysql';
 FLUSH PRIVILEGES;
 ```
 
-# SQL Migration
+# SQL_Migration
