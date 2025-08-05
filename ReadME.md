@@ -1,11 +1,12 @@
 ## cs_oppgave_05 
 #### C# / CRUD / MYSQL / API
 
-| Tags             | Chaper                 |
-|:-----------------|:-----------------------|
-| [oppgave05_V1](https://github.com/VoltG3/cs_oppgave_05/tags) | [SQL Migration](#1)    |
-| [oppgave05_V1](https://github.com/VoltG3/cs_oppgave_05/tags) | [SQL Migration](#2)    |
-| [oppgave05_V1](https://github.com/VoltG3/cs_oppgave_05/tags) | [SQL Migration](####2) |
+| Tags             | Chaper              |
+|:-----------------|:--------------------|
+| [oppgave05_V1] | [SQL Migration](#1) |
+| [oppgave05_V1] | [SQL Migration](#2) |
+| [oppgave05_V1] | [SQL Migration](#3) |
+| [oppgave05_V1] | [SQL Migration](#4) |
 
 #### Dependencies
 - Linux
@@ -71,4 +72,6 @@ FLUSH PRIVILEGES;
 ```
 
 # 1
-#### 2
+#### 2 
+#### 3.3
+#### 4 some things
