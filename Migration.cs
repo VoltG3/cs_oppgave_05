@@ -54,6 +54,12 @@ public static class Migration
                 insertCmd.ExecuteNonQuery();
                 
                 AnsiConsole.MarkupLine($"[bold green]Executed:[/][bold cyan] { fileName }[/]");
+               
+                AnsiConsole.Write(new Panel(sql)
+                    .Header($"[grey]SQL content of {fileName}[/]")
+                    .Collapse()
+                    .RoundedBorder()
+                    .BorderColor(Color.Grey));
             }
             catch (Exception ex)
             {
