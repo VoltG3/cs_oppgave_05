@@ -6,9 +6,9 @@
 | [oppgave05_V1](https://github.com/VoltG3/cs_oppgave_05/tags) | [SQL Migration](#sql-migrationn) |
 
 #### Dependencies
-##### - Linux
-##### - Docker
-##### - DBeaver
+- Linux
+- Docker
+- DBeaver
 
 ```sh
 dotnet add package MySql.Data
@@ -16,7 +16,7 @@ dotnet add package Spectre.Console
 dotnet add package Spectre.Console.Cli
 ```
 
-## SQL Migration
+
 
 #### Create Docker MYSQL container
 ```sh
@@ -67,3 +67,5 @@ if error: Public Key Retrieval is not allowed
 ALTER USER 'all'@'%' IDENTIFIED WITH mysql_native_password BY 'mysql';
 FLUSH PRIVILEGES;
 ```
+
+## SQL Migration
