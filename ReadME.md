@@ -1,9 +1,11 @@
 ## cs_oppgave_05 
 #### C# / CRUD / MYSQL / API
 
-| Tags             | Chaper                           |
-|:-----------------|:---------------------------------|
-| [oppgave05_V1](https://github.com/VoltG3/cs_oppgave_05/tags) | [SQL Migration](#sql-migrationn) |
+| Tags             | Chaper                 |
+|:-----------------|:-----------------------|
+| [oppgave05_V1](https://github.com/VoltG3/cs_oppgave_05/tags) | [SQL Migration](#1)    |
+| [oppgave05_V1](https://github.com/VoltG3/cs_oppgave_05/tags) | [SQL Migration](#2)    |
+| [oppgave05_V1](https://github.com/VoltG3/cs_oppgave_05/tags) | [SQL Migration](####2) |
 
 #### Dependencies
 - Linux
@@ -68,4 +70,5 @@ ALTER USER 'all'@'%' IDENTIFIED WITH mysql_native_password BY 'mysql';
 FLUSH PRIVILEGES;
 ```
 
-# SQL Migration
+# 1
+#### 2
