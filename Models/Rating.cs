@@ -20,5 +20,12 @@ namespace cs_oppgave_05.Models
         [Column("num_o_ratings")]
         [Range(0, int.MaxValue, ErrorMessage = "Number of ratings must be 0 or more")]
         public int? NumOfRatings { get; set; }
+        
+        // RELATIONS
+        [ForeignKey(nameof(MovId))]
+        public virtual Movie? Movie { get; set; }
+        
+        [ForeignKey(nameof(RevId))]
+        public virtual Reviewer? Reviewer { get; set;}
     }
 }

@@ -73,6 +73,21 @@ public class AppDbContext : DbContext
             .HasForeignKey(mg => mg.GenId)
             .OnDelete(DeleteBehavior.Cascade);
         
+        // rating : movie | reviewer
+        modelBuilder.Entity<Rating>()
+            .HasKey(r => new { r.MovId, r.RevId });
+        
+        modelBuilder.Entity<Rating>()
+            .HasOne(r => r.Movie)
+            .WithMany(m => m.Ratings)
+            .HasForeignKey(r => r.MovId)
+            .OnDelete(DeleteBehavior.Cascade);
+        
+        modelBuilder.Entity<Rating>()
+            .HasOne(r => r.Reviewer)
+            .WithMany(r => r.Ratings)
+            .HasForeignKey(r => r.RevId)
+            .OnDelete(DeleteBehavior.Cascade);
     }
 
 }
