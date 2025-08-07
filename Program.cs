@@ -11,10 +11,13 @@ using cs_oppgave_05.MYSQLMigration;
 //      2.1 Lag et GET-endepunkt
 //      2.2 Lag et POST-endepunkt
 
+
 class Program
 {
+    
     static void Main(string[] args)
     {
+        
         string connectionString = "" +
                                   "Server=localhost;" +
                                   "Port=3309;" +
@@ -27,6 +30,15 @@ class Program
         // if ok, then next:
         
         Migration.Run(connectionString);
+        
+        // WebServer
+        var builder = WebApplication.CreateBuilder(args);
+        var app = builder.Build();
+
+        app.MapGet("/", () => "Server OK");
+        app.MapGet("/ping", () => "Ping OK");
+
+        app.Run();
         
     }
 }
