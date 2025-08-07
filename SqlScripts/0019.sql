@@ -53,7 +53,7 @@ ALTER TABLE movie_cast
             ON UPDATE CASCADE;
 
 -- 0009.sql - Source table     - movie
--- 0007.sql - Source director  - director
+-- 0007.sql - Source table     - director
 -- 0005.sql - Receiver table   - movie_direction
 
 ALTER TABLE movie_direction

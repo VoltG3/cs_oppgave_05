@@ -6,4 +6,4 @@ CREATE TABLE movie (
     mov_lang VARCHAR(50),
     mov_dt_rel DATE,
     mov_rel_country VARCHAR(5)
-)
+);

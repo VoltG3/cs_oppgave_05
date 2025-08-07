@@ -1,11 +1,12 @@
 #### CS_OPPGAVE_05 / C# / CRUD / MYSQL / API
 
-| Tags           | Chaper                                                           |
-|:---------------|:-----------------------------------------------------------------|
-| [oppgave05_V1] | [SQL Migration](#sql-migration)                                  |
-|                | [Docker MYSQL container](#docker-mysql-container)                |
-|                | [C# Register path for sql script](#register-path-for-sql-script) |
-|                | [DBeaver](#dbeaver)                                              |
+| Tags         | Chaper                                                            |
+|:-------------|:------------------------------------------------------------------|
+| oppgave05_V1 | [SQL Migration](#sql-migration)                                   |
+|              | [Docker MYSQL container](#docker-mysql-container)                 |
+|              | [C# Register path for sql script](#register-path-for-sql-script)  |
+|              | [DBeaver](#dbeaver)                                               |
+| img          | [Relation Diagram](#relation-diagram) | 
 
 #### Dependencies
 - Linux
@@ -18,8 +19,8 @@ dotnet add package Spectre.Console
 dotnet add package Spectre.Console.Cli
 ```
 
-
-### SQL Migration
+## SQL Migration
+___
 #### Docker MYSQL container
 ```sh
 docker create
@@ -69,3 +70,5 @@ if error: Public Key Retrieval is not allowed
 ALTER USER 'all'@'%' IDENTIFIED WITH mysql_native_password BY 'mysql';
 FLUSH PRIVILEGES;
 ```
+#### Relation Diagram
+![img](https://github.com/VoltG3/cs_oppgave_05/blob/master/01.png)
