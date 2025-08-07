@@ -1,4 +1,5 @@
-﻿using cs_oppgave_05.Tests.MYSQLConnection;
+﻿using System.Text.Json.Serialization;
+using cs_oppgave_05.Tests.MYSQLConnection;
 using cs_oppgave_05.Migration.MYSQLMigration;
 using cs_oppgave_05.Data;
 using Microsoft.EntityFrameworkCore;
@@ -36,6 +37,14 @@ class Program
         
         // WebServer
         var builder = WebApplication.CreateBuilder(args);
+        
+        // to reduce serialization issue
+        builder.Services.AddControllers()
+            .AddJsonOptions(x =>
+            {
+                x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.Preserve;
+            });
+        //
         
         builder.Services.AddControllers();
         

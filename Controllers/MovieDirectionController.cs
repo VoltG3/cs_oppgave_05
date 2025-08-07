@@ -19,8 +19,12 @@ namespace cs_oppgave_05.Data.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<MovieDirection>>> GetAll()
         {
-            var movieDirections = await _context.MovieDirections.ToListAsync();
-            return Ok(movieDirections);
+            var result = await _context.MovieDirections
+                .Include(md => md.Movie)
+                .Include(md => md.Director)
+                .ToListAsync();
+
+            return Ok(result);
         }
     }
 }

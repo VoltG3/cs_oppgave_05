@@ -21,5 +21,7 @@ namespace cs_oppgave_05.Models
         [Column("dir_lname")]
         public string DirLname { get; set; } = string.Empty;
         
+        // Relation
+        public virtual ICollection<MovieDirection>? MovieDirections { get; set; }
     }
 }

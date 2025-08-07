@@ -34,5 +34,8 @@ namespace cs_oppgave_05.Models
         [Column("mov_rel_country")]
         public string MovRelCountry { get; set; } = string.Empty;
         
+        // Relation
+        public virtual ICollection<MovieDirection>? MovieDirections { get; set; }
+
     }
 }

@@ -20,4 +20,26 @@ public class AppDbContext : DbContext
     public DbSet<MovieGenres> MovieGenress { get; set; }
     public DbSet<Genres> Genres { get; set; }
     
+    // Foreign Key
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    {
+        base.OnModelCreating(modelBuilder);
+
+        modelBuilder.Entity<MovieDirection>()
+            .HasKey(md => new { md.DirId, md.MovId });
+
+        modelBuilder.Entity<MovieDirection>()
+            .HasOne(md => md.Director)
+            .WithMany(d => d.MovieDirections)
+            .HasForeignKey(md => md.DirId)
+            .OnDelete(DeleteBehavior.Cascade);
+
+        modelBuilder.Entity<MovieDirection>()
+            .HasOne(md => md.Movie)
+            .WithMany(m => m.MovieDirections)
+            .HasForeignKey(md => md.MovId)
+            .OnDelete(DeleteBehavior.Cascade);
+
+    }
+
 }
