@@ -22,5 +22,19 @@ namespace cs_oppgave_05.Data.Controllers
             var movies = await _context.Movies.ToListAsync();
             return Ok(movies);
         }
+        
+        // GET: api/movies/{id}
+        [HttpGet("{id}")]
+        public async Task<ActionResult<Movie>> GetById(int id)
+        {
+            var movie = await _context.Movies.FindAsync(id);
+
+            if (movie == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(movie);
+        }
     }
 }

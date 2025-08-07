@@ -22,5 +22,19 @@ namespace cs_oppgave_05.Data.Controllers
             var reviewers = await _context.Directors.ToListAsync();
             return Ok(reviewers);
         }
+        
+        // GET: api/reviewers/{id}
+        [HttpGet("{id}")]
+        public async Task<ActionResult<Reviewer>> GetById(int id)
+        {
+            var reviewer = await _context.Reviewers.FindAsync(id);
+
+            if (reviewer == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(reviewer);
+        }
     }
 }

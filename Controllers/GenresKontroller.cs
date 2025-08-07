@@ -22,5 +22,19 @@ namespace cs_oppgave_05.Data.Controllers
             var genres = await _context.Genres.ToListAsync();
             return Ok(genres);
         }
+        
+        // GET: api/genres/{id}
+        [HttpGet("{id}")]
+        public async Task<ActionResult<Genres>> GetById(int id)
+        {
+            var genres = await _context.Genres.FindAsync(id);
+
+            if (genres == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(genres);
+        }
     }
 }

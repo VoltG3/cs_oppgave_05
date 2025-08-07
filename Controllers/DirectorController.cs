@@ -23,5 +23,19 @@ namespace cs_oppgave_05.Data.Controllers
             var directors = await _context.Directors.ToListAsync();
             return Ok(directors);
         }
+        
+        // GET: api/directors/{id}
+        [HttpGet("{id}")]
+        public async Task<ActionResult<Director>> GetById(int id)
+        {
+            var director = await _context.Directors.FindAsync(id);
+
+            if (director == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(director);
+        }
     }
 }

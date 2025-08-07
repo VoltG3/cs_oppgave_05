@@ -22,5 +22,20 @@ namespace cs_oppgave_05.Data.Controllers
             var ratings = await _context.Ratings.ToListAsync();
             return Ok(ratings);
         }
+        
+        // GET: api/ratings/{id}/{id}
+        [HttpGet("{movId}/{revId}")]
+        public async Task<ActionResult<Rating>> GetById(int movId, int revId)
+        {
+            var rating = await _context.Ratings
+                .FirstOrDefaultAsync(r => r.MovId == movId && r.RevId == revId);
+
+            if (rating == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(rating);
+        }
     }
 }

@@ -22,5 +22,20 @@ namespace cs_oppgave_05.Data.Controllers
             var movieCasts = await _context.MovieCasts.ToListAsync();
             return Ok(movieCasts);
         }
+        
+        // GET: api/movie_casts/{id}/{id}
+        [HttpGet("{actId}/{movId}")]
+        public async Task<ActionResult<MovieCast>> GetById(int actId, int movId)
+        {
+            var movieCast = await _context.MovieCasts
+                .FirstOrDefaultAsync(mk => mk.ActId == actId && mk.MovId == movId);
+
+            if (movieCast == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(movieCast);
+        }
     }
 }

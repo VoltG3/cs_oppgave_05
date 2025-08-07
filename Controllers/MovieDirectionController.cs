@@ -26,5 +26,20 @@ namespace cs_oppgave_05.Data.Controllers
 
             return Ok(result);
         }
+        
+        // GET: api/movie_dierections/{id}/{id}
+        [HttpGet("{dirId}/{movId}")]
+        public async Task<ActionResult<MovieDirection>> GetById(int dirId, int movId)
+        {
+            var movieDirection = await _context.MovieDirections
+                .FirstOrDefaultAsync(md => md.DirId == dirId && md.MovId == movId);
+
+            if (movieDirection == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(movieDirection);
+        }
     }
 }

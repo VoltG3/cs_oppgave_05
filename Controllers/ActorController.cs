@@ -22,5 +22,20 @@ namespace cs_oppgave_05.Data.Controllers
             var actors = await _context.Actors.ToListAsync();
             return Ok(actors);
         }
+        
+        // GET: api/actors/{id}
+        [HttpGet("{id}")]
+        public async Task<ActionResult<Actor>> GetById(int id)
+        {
+            var actor = await _context.Actors.FindAsync(id);
+
+            if (actor == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(actor);
+        }
+
     }
 }
