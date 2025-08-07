@@ -56,9 +56,23 @@ public class AppDbContext : DbContext
             .WithMany(a => a.MovieCasts)
             .HasForeignKey(mk => mk.ActId)
             .OnDelete(DeleteBehavior.Cascade);
-
         
-       
+        // movie_genres : movie | genres
+        modelBuilder.Entity<MovieGenres>()
+            .HasKey(mg => new { mg.MovId, mg.GenId });
+        
+        modelBuilder.Entity<MovieGenres>()
+            .HasOne(mg => mg.Movie)
+            .WithMany(m => m.MovieGenres)
+            .HasForeignKey(mg => mg.MovId)
+            .OnDelete(DeleteBehavior.Cascade);
+        
+        modelBuilder.Entity<MovieGenres>()
+            .HasOne(mg => mg.Genres)
+            .WithMany(g => g.MovieGenres)
+            .HasForeignKey(mg => mg.GenId)
+            .OnDelete(DeleteBehavior.Cascade);
+        
     }
 
 }

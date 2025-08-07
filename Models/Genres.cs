@@ -14,5 +14,8 @@ namespace cs_oppgave_05.Models
         [MaxLength(20)]
         [Column("gen_title")]
         public string GenTitle { get; set; } = string.Empty;
+        
+        // Relation
+        public virtual ICollection<MovieGenres>? MovieGenres { get; set; }
     }
 }
