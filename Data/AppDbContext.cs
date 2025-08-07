@@ -24,7 +24,8 @@ public class AppDbContext : DbContext
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         base.OnModelCreating(modelBuilder);
-
+        
+        // movie_direction : movie | director
         modelBuilder.Entity<MovieDirection>()
             .HasKey(md => new { md.DirId, md.MovId });
 
@@ -39,7 +40,25 @@ public class AppDbContext : DbContext
             .WithMany(m => m.MovieDirections)
             .HasForeignKey(md => md.MovId)
             .OnDelete(DeleteBehavior.Cascade);
+        
+        // movie_cast : movie | actor
+        modelBuilder.Entity<MovieCast>()
+            .HasKey(mk => new { mk.ActId, mk.MovId });
+        
+        modelBuilder.Entity<MovieCast>()
+            .HasOne(mk => mk.Movie)
+            .WithMany(m => m.MovieCasts)
+            .HasForeignKey(mk => mk.MovId)
+            .OnDelete(DeleteBehavior.Cascade);
+        
+        modelBuilder.Entity<MovieCast>()
+            .HasOne(mk => mk.Actor)
+            .WithMany(a => a.MovieCasts)
+            .HasForeignKey(mk => mk.ActId)
+            .OnDelete(DeleteBehavior.Cascade);
 
+        
+       
     }
 
 }

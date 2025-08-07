@@ -24,5 +24,8 @@ namespace cs_oppgave_05.Models
          [Column("act_gender")]
          [RegularExpression("^[MF]$", ErrorMessage = "Gender must be 'M' or 'F'")]
          public string ActGender { get; set; } = string.Empty;
+         
+         // Relation
+         public virtual ICollection<MovieCast>? MovieCasts { get; set; }
     }
 }

@@ -36,6 +36,8 @@ namespace cs_oppgave_05.Models
         
         // Relation
         public virtual ICollection<MovieDirection>? MovieDirections { get; set; }
+        public virtual ICollection<MovieCast>? MovieCasts { get; set; }
+        
 
     }
 }
