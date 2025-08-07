@@ -1,13 +1,15 @@
 #### CS_OPPGAVE_05 / C# / CRUD / MYSQL / API
 
-| Tags         | Chaper                                                            |
-|:-------------|:------------------------------------------------------------------|
-| oppgave05_V1 | [SQL Migration](#sql-migration)                                   |
-|              | [Docker MYSQL container](#docker-mysql-container)                 |
-|              | [C# Register path for sql script](#register-path-for-sql-script)  |
-|              | [DBeaver](#dbeaver)                                               |
-| img          | [Relation Diagram](#relation-diagram) |
-| oppgave05_V2 | [Simple Web Server](#simple-webserver) 
+| Tags         | Chaper                                                           |
+|:-------------|:-----------------------------------------------------------------|
+| oppgave05_V1 | [SQL Migration](#sql-migration)                                  |
+|              | [Docker MYSQL container](#docker-mysql-container)                |
+|              | [C# Register path for sql script](#register-path-for-sql-script) |
+|              | [DBeaver](#dbeaver)                                              |
+| img          | [Relation Diagram](#relation-diagram)                            |
+| oppgave05_V2 | [Simple Web Server](#simple-webserver)                           |
+| oppgave05_V3 | [CRUD](#crud)                                                    |
+|              | [Issues](#issues) |
 
 #### Dependencies
 - Linux
@@ -18,10 +20,20 @@
 dotnet add package MySql.Data
 dotnet add package Spectre.Console
 dotnet add package Spectre.Console.Cli
+
+dotnet add package Pomelo.EntityFrameworkCore.MySql
+dotnet add package Microsoft.EntityFrameworkCore
+dotnet add package MySqlConnector
 ```
 
 ## SQL Migration
 ___
+#### Dependencies
+```sh
+dotnet add package MySql.Data
+dotnet add package Spectre.Console
+dotnet add package Spectre.Console.Cli
+```
 #### Docker MYSQL container
 ```sh
 docker create
@@ -114,3 +126,44 @@ termnall:
       curl http://localhost:5000 
       
 ```
+
+## CRUD
+___
+
+#### Dependencies
+```sh
+dotnet add package Pomelo.EntityFrameworkCore.MySql
+dotnet add package Microsoft.EntityFrameworkCore
+dotnet add package MySqlConnector
+```
+
+#### Issues
+
+Remove `server.csproj`, then rewrite 'cs_oppgave_05.proj
+```sh
+<Project Sdk="Microsoft.NET.Sdk.Web">
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net9.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.5" />
+    <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="8.0.3" />
+    <PackageReference Include="MySql.Data" Version="9.4.0" />
+    <PackageReference Include="Spectre.Console" Version="0.50.0" />
+    <PackageReference Include="Spectre.Console.Cli" Version="0.50.0" />
+  </ItemGroup>
+</Project>
+```
+
+#### If EF Core version crash
+```sh
+dotnet remove package Microsoft.EntityFrameworkCore
+dotnet add package Microsoft.EntityFrameworkCore --version 8.0.13
+```
+
+
+

@@ -1,5 +1,8 @@
 ﻿using cs_oppgave_05.Tests.MYSQLConnection;
-using cs_oppgave_05.MYSQLMigration;
+using cs_oppgave_05.Migration.MYSQLMigration;
+using cs_oppgave_05.Data;
+using Microsoft.EntityFrameworkCore;
+// using cs_oppgave_05.Data;
 
 //      Task: RestAPI with Controllers (MVC)
 //
@@ -33,11 +36,18 @@ class Program
         
         // WebServer
         var builder = WebApplication.CreateBuilder(args);
+        
+        builder.Services.AddControllers();
+        
+        builder.Services.AddDbContext<AppDbContext>(options =>
+            options.UseMySql(connectionString, new MySqlServerVersion(new Version(8, 0, 21))));
+        
         var app = builder.Build();
 
+        app.MapControllers();
         app.MapGet("/", () => "Server OK");
         app.MapGet("/ping", () => "Ping OK");
-
+        
         app.Run();
         
     }

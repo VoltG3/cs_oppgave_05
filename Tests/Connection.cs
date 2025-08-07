@@ -1,4 +1,4 @@
-using MySql.Data.MySqlClient;
+using MySqlConnector;
 using Spectre.Console;
 
 namespace cs_oppgave_05.Tests.MYSQLConnection;

@@ -1,7 +1,7 @@
-using MySql.Data.MySqlClient;
+using MySqlConnector;
 using Spectre.Console;
 
-namespace cs_oppgave_05.MYSQLMigration;
+namespace cs_oppgave_05.Migration.MYSQLMigration;
 
 public static class Migration
 {
