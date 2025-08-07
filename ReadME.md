@@ -6,7 +6,8 @@
 |              | [Docker MYSQL container](#docker-mysql-container)                 |
 |              | [C# Register path for sql script](#register-path-for-sql-script)  |
 |              | [DBeaver](#dbeaver)                                               |
-| img          | [Relation Diagram](#relation-diagram) | 
+| img          | [Relation Diagram](#relation-diagram) |
+| oppgave05_V2 | [Simple Web Server](#simple-webserver) 
 
 #### Dependencies
 - Linux
@@ -72,3 +73,44 @@ FLUSH PRIVILEGES;
 ```
 #### Relation Diagram
 ![img](https://github.com/VoltG3/cs_oppgave_05/blob/master/01.png)
+
+## Simple Webserver
+___
+#### Add 'server.csproj'
+```sh
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net9.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+</Project>
+```
+
+#### Edit 'cs_oppgave_05.csproj'
+```sh
+replace
+
+          <Project Sdk="Microsoft.NET.Sdk">
+          <TargetFramework>net7.0</TargetFramework>
+          
+with
+
+          <Project Sdk="Microsoft.NET.Sdk.Web">
+          <TargetFramework>net9.0</TargetFramework> 
+          
+```
+
+#### Check Connection
+```sh
+web:
+
+      http://localhost:5000
+      
+termnall:
+
+      curl http://localhost:5000 
+      
+```
