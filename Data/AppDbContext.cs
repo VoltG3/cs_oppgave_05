@@ -20,12 +20,13 @@ public class AppDbContext : DbContext
     public DbSet<MovieGenres> MovieGenres { get; set; }
     public DbSet<Genres> Genres { get; set; }
     
-    // Foreign Key
+    // Relations
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         base.OnModelCreating(modelBuilder);
         
         // movie_direction : movie | director
+        
         modelBuilder.Entity<MovieDirection>()
             .HasKey(md => new { md.DirId, md.MovId });
 
@@ -42,6 +43,7 @@ public class AppDbContext : DbContext
             .OnDelete(DeleteBehavior.Cascade);
         
         // movie_cast : movie | actor
+        
         modelBuilder.Entity<MovieCast>()
             .HasKey(mk => new { mk.ActId, mk.MovId });
         
@@ -58,6 +60,7 @@ public class AppDbContext : DbContext
             .OnDelete(DeleteBehavior.Cascade);
         
         // movie_genres : movie | genres
+        
         modelBuilder.Entity<MovieGenres>()
             .HasKey(mg => new { mg.MovId, mg.GenId });
         
@@ -74,6 +77,7 @@ public class AppDbContext : DbContext
             .OnDelete(DeleteBehavior.Cascade);
         
         // rating : movie | reviewer
+        
         modelBuilder.Entity<Rating>()
             .HasKey(r => new { r.MovId, r.RevId });
         
@@ -89,5 +93,5 @@ public class AppDbContext : DbContext
             .HasForeignKey(r => r.RevId)
             .OnDelete(DeleteBehavior.Cascade);
     }
-
+    
 }

@@ -9,4 +9,3 @@ namespace cs_oppgave_05.Data.DTOs.Rating
         public int? NumOfRatings { get; set; }
     }
 }
-

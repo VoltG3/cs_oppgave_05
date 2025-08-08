@@ -3,7 +3,7 @@ using Spectre.Console;
 
 namespace cs_oppgave_05.Migration.MYSQLMigration;
 
-public static class Migration
+public static class SqlMigration
 {
     public static void Run(string connectionString)
     {

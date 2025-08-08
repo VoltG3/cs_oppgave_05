@@ -10,7 +10,6 @@ namespace cs_oppgave_05.Models
         [Column("mov_id")]
         public int MovId { get; set; }
         
-        //[Key]
         [Column("rev_id")]
         public int RevId { get; set; }
 
@@ -21,7 +20,7 @@ namespace cs_oppgave_05.Models
         [Range(0, int.MaxValue, ErrorMessage = "Number of ratings must be 0 or more")]
         public int? NumOfRatings { get; set; }
         
-        // RELATIONS
+        // Relation
         [ForeignKey(nameof(MovId))]
         public virtual Movie? Movie { get; set; }
         

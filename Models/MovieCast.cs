@@ -6,11 +6,9 @@ namespace cs_oppgave_05.Models
     [Table("movie_cast")]
     public class MovieCast
     {
-        //[Key]
         [Column("act_id")]
         public int ActId { get; set; }
         
-        //[Key]
         [Column("mov_id")]
         public int MovId { get; set; }
         
@@ -19,7 +17,7 @@ namespace cs_oppgave_05.Models
         [Column("role")]
         public string Role { get; set; } = string.Empty;
         
-        // Relations
+        // Relation
         [ForeignKey(nameof(ActId))]
         public virtual Actor? Actor { get; set; }
         

@@ -3,7 +3,7 @@ using cs_oppgave_05.Tests.MYSQLConnection;
 using cs_oppgave_05.Migration.MYSQLMigration;
 using cs_oppgave_05.Data;
 using Microsoft.EntityFrameworkCore;
-// using cs_oppgave_05.Data;
+
 
 //      Task: RestAPI with Controllers (MVC)
 //
@@ -31,21 +31,18 @@ class Program
         
         Console.Clear();
         MysqlConnectionTester.TestConnection(connectionString);
-        // if ok, then next:
+        SqlMigration.Run(connectionString);
         
-        Migration.Run(connectionString);
-        
-        // WebServer
         var builder = WebApplication.CreateBuilder(args);
         
-        // to reduce serialization issue
+        // To reduce serialization infinitiv loop issue
         builder.Services.AddControllers()
             .AddJsonOptions(x =>
             {
                 x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.Preserve;
             });
-        //
         
+        // WebServer
         builder.Services.AddControllers();
         
         builder.Services.AddDbContext<AppDbContext>(options =>

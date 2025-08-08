@@ -15,6 +15,7 @@ namespace cs_oppgave_05.Models
         [Column("rev_name")]
         public string RevName { get; set; } = string.Empty;
         
+        // Relation
         public virtual ICollection<Rating>? Ratings { get; set; }
     }
 }

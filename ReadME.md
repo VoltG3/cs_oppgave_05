@@ -6,10 +6,13 @@
 |              | [Docker MYSQL container](#docker-mysql-container)                |
 |              | [C# Register path for sql script](#register-path-for-sql-script) |
 |              | [DBeaver](#dbeaver)                                              |
-| img          | [Relation Diagram](#relation-diagram)                            |
 | oppgave05_V2 | [Simple Web Server](#simple-webserver)                           |
 | oppgave05_V3 | [CRUD](#crud)                                                    |
-|              | [Issues](#issues) |
+|              | [Issues](#issues)                                                |
+| img          | [Relation Diagram](#relation-diagram)                            |
+|              | [Requests](#requests)                                            |
+|              | [DTOs](#dtos)                                                    |
+
 
 #### Dependencies
 - Linux
@@ -83,12 +86,10 @@ if error: Public Key Retrieval is not allowed
 ALTER USER 'all'@'%' IDENTIFIED WITH mysql_native_password BY 'mysql';
 FLUSH PRIVILEGES;
 ```
-#### Relation Diagram
-![img](https://github.com/VoltG3/cs_oppgave_05/blob/master/01.png)
 
 ## Simple Webserver
 ___
-#### Add 'server.csproj'
+#### Add `server.csproj`
 ```sh
 <Project Sdk="Microsoft.NET.Sdk.Web">
 
@@ -101,7 +102,7 @@ ___
 </Project>
 ```
 
-#### Edit 'cs_oppgave_05.csproj'
+#### Edit `cs_oppgave_05.csproj`
 ```sh
 replace
 
@@ -139,7 +140,7 @@ dotnet add package MySqlConnector
 
 #### Issues
 
-Remove `server.csproj`, then rewrite 'cs_oppgave_05.proj
+Remove `server.csproj`, then rewrite `cs_oppgave_05.proj`
 ```sh
 <Project Sdk="Microsoft.NET.Sdk.Web">
   <PropertyGroup>
@@ -165,5 +166,64 @@ dotnet remove package Microsoft.EntityFrameworkCore
 dotnet add package Microsoft.EntityFrameworkCore --version 8.0.13
 ```
 
+#### Relation Diagram
+![img](https://github.com/VoltG3/cs_oppgave_05/blob/master/01.png)
 
+#### Requests
+```sh
+curl http://localhost:5000/api/directors
+curl http://localhost:5000/api/directors/205
 
+curl http://localhost:5000/api/reviewers
+curl http://localhost:5000/api/reviewers/9020
+
+curl http://localhost:5000/api/movieDirection
+curl http://localhost:5000/api/movieDirection/201/901
+
+curl http://localhost:5000/api/movieCasts
+curl http://localhost:5000/api/movieCasts/101/901
+
+curl http://localhost:5000/api/movies
+curl http://localhost:5000/api/movies/909
+
+curl http://localhost:5000/api/ratings
+curl http://localhost:5000/api/ratings/921/9018
+
+curl http://localhost:5000/api/actors
+curl http://localhost:5000/api/actors/105
+
+curl http://localhost:5000/api/movieGenres
+curl http://localhost:5000/api/movieGenres/904/1013
+
+curl http://localhost:5000/api/genres
+curl http://localhost:5000/api/genres/1013
+```
+
+#### DTOs
+`movie_direction`
+```sh
+curl -v -X POST "http://localhost:5000/api/movieDirection" \
+  -H "Content-Type: application/json" \
+  -d '{"dirId":999,"movId":999}'
+```
+
+`movie_genres`
+```sh
+curl -v -X POST "http://localhost:5000/api/movieGenres" \
+  -H "Content-Type: application/json" \
+  -d '{"movId":999,"genId":999}'
+```
+
+`rating`
+```sh
+curl -v -X POST "http://localhost:5000/api/Ratings" \
+  -H "Content-Type: application/json" \
+  -d '{"movId":999,"revId":999,"revStars":44,"numOfRatings":44}'
+```
+
+`movie_cast`
+```sh
+curl -v -X POST "http://localhost:5000/api/movieCasts" \
+  -H "Content-Type: application/json" \
+  -d '{"actId":999,"movId":999,"role":"Main Character"}'
+```

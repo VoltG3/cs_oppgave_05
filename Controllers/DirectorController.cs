@@ -3,7 +3,6 @@ using Microsoft.EntityFrameworkCore;
 using cs_oppgave_05.Models;
 
 namespace cs_oppgave_05.Data.Controllers
-
 {
     [ApiController]
     [Route("api/[controller]")]
