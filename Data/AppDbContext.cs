@@ -17,7 +17,7 @@ public class AppDbContext : DbContext
     public DbSet<Movie> Movies { get; set; }
     public DbSet<Rating> Ratings { get; set; }
     public DbSet<Actor> Actors { get; set; }
-    public DbSet<MovieGenres> MovieGenress { get; set; }
+    public DbSet<MovieGenres> MovieGenres { get; set; }
     public DbSet<Genres> Genres { get; set; }
     
     // Foreign Key
