@@ -48,8 +48,21 @@ class Program
         builder.Services.AddDbContext<AppDbContext>(options =>
             options.UseMySql(connectionString, new MySqlServerVersion(new Version(8, 0, 21))));
         
+        // CORS preflight
+        builder.Services.AddCors(opts =>
+        {
+            opts.AddPolicy("DefaultCors", p => p
+                    .WithOrigins("http://localhost:5000") // vai "*", ja tiešām vajag visiem
+                    .AllowAnyHeader()
+                    .AllowAnyMethod()   // GET, POST, PUT, DELETE, OPTIONS utt.
+            );
+        });
+        
         var app = builder.Build();
 
+        app.UseCors("DefaultCors");
+        app.UseAuthorization();
+        
         app.MapControllers();
         app.MapGet("/", () => "Server OK");
         app.MapGet("/ping", () => "Ping OK");
