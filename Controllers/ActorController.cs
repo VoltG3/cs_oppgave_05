@@ -36,6 +36,19 @@ namespace cs_oppgave_05.Data.Controllers
 
             return Ok(actor);
         }
+        
+        // POST: api/actors
+        [HttpPost]
+        public async Task<ActionResult<Actor>> Create([FromBody] Actor actor)
+        {
+            if (!ModelState.IsValid)
+                return ValidationProblem(ModelState);
+
+            _context.Actors.Add(actor);
+            await _context.SaveChangesAsync();
+
+            return CreatedAtAction(nameof(GetById), new { id = actor.ActId }, actor);
+        }
 
     }
 }

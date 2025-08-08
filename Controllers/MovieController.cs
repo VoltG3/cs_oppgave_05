@@ -36,5 +36,18 @@ namespace cs_oppgave_05.Data.Controllers
 
             return Ok(movie);
         }
+        
+        // POST: api/movies
+        [HttpPost]
+        public async Task<ActionResult<Movie>> Create([FromBody] Movie movies)
+        {
+            if (!ModelState.IsValid)
+                return ValidationProblem(ModelState);
+
+            _context.Movies.Add(movies);
+            await _context.SaveChangesAsync();
+
+            return CreatedAtAction(nameof(GetById), new { id = movies.MovId }, movies);
+        }
     }
 }

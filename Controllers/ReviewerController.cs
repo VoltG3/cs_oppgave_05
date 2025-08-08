@@ -36,5 +36,18 @@ namespace cs_oppgave_05.Data.Controllers
 
             return Ok(reviewer);
         }
+        
+        // POST: api/reviewers
+        [HttpPost]
+        public async Task<ActionResult<Reviewer>> Create([FromBody] Reviewer reviewer)
+        {
+            if (!ModelState.IsValid)
+                return ValidationProblem(ModelState);
+
+            _context.Reviewers.Add(reviewer);
+            await _context.SaveChangesAsync();
+
+            return CreatedAtAction(nameof(GetById), new { id = reviewer.RevId }, reviewer);
+        }
     }
 }

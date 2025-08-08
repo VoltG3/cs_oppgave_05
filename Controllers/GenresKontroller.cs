@@ -36,5 +36,18 @@ namespace cs_oppgave_05.Data.Controllers
 
             return Ok(genres);
         }
+        
+        // POST: api/genres
+        [HttpPost]
+        public async Task<ActionResult<Director>> Create([FromBody] Genres genres)
+        {
+            if (!ModelState.IsValid)
+                return ValidationProblem(ModelState);
+
+            _context.Genres.Add(genres);
+            await _context.SaveChangesAsync();
+
+            return CreatedAtAction(nameof(GetById), new { id = genres.GenId }, genres);
+        }
     }
 }

@@ -13,7 +13,7 @@ namespace cs_oppgave_05.Models
         [Required]
         [MaxLength(20)]
         [Column("act_fname")]
-        public string ActName { get; set; } = string.Empty;
+        public string ActFname { get; set; } = string.Empty;
         
         [Required]
         [MaxLength(20)]
