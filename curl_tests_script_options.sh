@@ -1,17 +1,99 @@
-curl -i -X OPTIONS "http://localhost:5000/api/movies"
-curl -i -X OPTIONS "http://localhost:5000/api/movies/929"
-curl -i -X OPTIONS "http://localhost:5000/api/genres"
-curl -i -X OPTIONS "http://localhost:5000/api/genres/1014"
-curl -i -X OPTIONS "http://localhost:5000/api/movie_genres"
-curl -i -X OPTIONS "http://localhost:5000/api/movie_genres/929/1014"
-curl -i -X OPTIONS "http://localhost:5000/api/actors"
-curl -i -X OPTIONS "http://localhost:5000/api/actors/125"
-curl -i -X OPTIONS "http://localhost:5000/api/movies_casts"
-curl -i -X OPTIONS "http://localhost:5000/api/movies_casts/125/929"
-curl -i -X OPTIONS "http://localhost:5000/api/reviewers"
-curl -i -X OPTIONS "http://localhost:5000/api/reviewers/9021"
-curl -i -X OPTIONS "http://localhost:5000/api/ratings"
-curl -i -X OPTIONS "http://localhost:5000/api/ratings/929/9021"
-curl -i -X OPTIONS "http://localhost:5000/api/directors"
-curl -i -X OPTIONS "http://localhost:5000/api/directors/224"
-curl -i -X OPTIONS "http://localhost:5000/api/movie_genres/224/929"
+# ===== MOVIES =====
+curl -i -X OPTIONS "http://localhost:5000/api/Movies" \
+  -H "Origin: $ORIGIN" -H "Access-Control-Request-Method: GET"
+curl -i -X OPTIONS "http://localhost:5000/api/Movies/929" \
+  -H "Origin: $ORIGIN" -H "Access-Control-Request-Method: GET"
+curl -i -X OPTIONS "http://localhost:5000/api/Movies" \
+  -H "Origin: $ORIGIN" -H "Access-Control-Request-Method: POST"
+curl -i -X OPTIONS "http://localhost:5000/api/Movies/929" \
+  -H "Origin: $ORIGIN" -H "Access-Control-Request-Method: PATCH"
+curl -i -X OPTIONS "http://localhost:5000/api/Movies/929" \
+  -H "Origin: $ORIGIN" -H "Access-Control-Request-Method: DELETE"
+
+# ===== GENRES =====
+curl -i -X OPTIONS "http://localhost:5000/api/Genres" \
+  -H "Origin: $ORIGIN" -H "Access-Control-Request-Method: GET"
+curl -i -X OPTIONS "http://localhost:5000/api/Genres/1014" \
+  -H "Origin: $ORIGIN" -H "Access-Control-Request-Method: GET"
+curl -i -X OPTIONS "http://localhost:5000/api/Genres" \
+  -H "Origin: $ORIGIN" -H "Access-Control-Request-Method: POST"
+curl -i -X OPTIONS "http://localhost:5000/api/Genres/1014" \
+  -H "Origin: $ORIGIN" -H "Access-Control-Request-Method: PATCH"
+curl -i -X OPTIONS "http://localhost:5000/api/Genres/1014" \
+  -H "Origin: $ORIGIN" -H "Access-Control-Request-Method: DELETE"
+
+# ===== MOVIEGENRES =====
+curl -i -X OPTIONS "http://localhost:5000/api/MovieGenres" \
+  -H "Origin: $ORIGIN" -H "Access-Control-Request-Method: GET"
+curl -i -X OPTIONS "http://localhost:5000/api/MovieGenres/929/1014" \
+  -H "Origin: $ORIGIN" -H "Access-Control-Request-Method: GET"
+curl -i -X OPTIONS "http://localhost:5000/api/MovieGenres" \
+  -H "Origin: $ORIGIN" -H "Access-Control-Request-Method: POST"
+curl -i -X OPTIONS "http://localhost:5000/api/MovieGenres/929/1014" \
+  -H "Origin: $ORIGIN" -H "Access-Control-Request-Method: DELETE"
+
+# ===== ACTORS =====
+curl -i -X OPTIONS "http://localhost:5000/api/Actors" \
+  -H "Origin: $ORIGIN" -H "Access-Control-Request-Method: GET"
+curl -i -X OPTIONS "http://localhost:5000/api/Actors/125" \
+  -H "Origin: $ORIGIN" -H "Access-Control-Request-Method: GET"
+curl -i -X OPTIONS "http://localhost:5000/api/Actors" \
+  -H "Origin: $ORIGIN" -H "Access-Control-Request-Method: POST"
+curl -i -X OPTIONS "http://localhost:5000/api/Actors/125" \
+  -H "Origin: $ORIGIN" -H "Access-Control-Request-Method: PATCH"
+curl -i -X OPTIONS "http://localhost:5000/api/Actors/125" \
+  -H "Origin: $ORIGIN" -H "Access-Control-Request-Method: DELETE"
+
+# ===== MOVIECASTS =====
+curl -i -X OPTIONS "http://localhost:5000/api/MovieCasts" \
+  -H "Origin: $ORIGIN" -H "Access-Control-Request-Method: GET"
+curl -i -X OPTIONS "http://localhost:5000/api/MovieCasts/125/929" \
+  -H "Origin: $ORIGIN" -H "Access-Control-Request-Method: GET"
+curl -i -X OPTIONS "http://localhost:5000/api/MovieCasts" \
+  -H "Origin: $ORIGIN" -H "Access-Control-Request-Method: POST"
+curl -i -X OPTIONS "http://localhost:5000/api/MovieCasts/125/929" \
+  -H "Origin: $ORIGIN" -H "Access-Control-Request-Method: DELETE"
+
+# ===== REVIEWERS =====
+curl -i -X OPTIONS "http://localhost:5000/api/Reviewers" \
+  -H "Origin: $ORIGIN" -H "Access-Control-Request-Method: GET"
+curl -i -X OPTIONS "http://localhost:5000/api/Reviewers/9021" \
+  -H "Origin: $ORIGIN" -H "Access-Control-Request-Method: GET"
+curl -i -X OPTIONS "http://localhost:5000/api/Reviewers" \
+  -H "Origin: $ORIGIN" -H "Access-Control-Request-Method: POST"
+curl -i -X OPTIONS "http://localhost:5000/api/Reviewers/9021" \
+  -H "Origin: $ORIGIN" -H "Access-Control-Request-Method: PATCH"
+curl -i -X OPTIONS "http://localhost:5000/api/Reviewers/9021" \
+  -H "Origin: $ORIGIN" -H "Access-Control-Request-Method: DELETE"
+
+# ===== RATINGS =====
+curl -i -X OPTIONS "http://localhost:5000/api/Ratings" \
+  -H "Origin: $ORIGIN" -H "Access-Control-Request-Method: GET"
+curl -i -X OPTIONS "http://localhost:5000/api/Ratings/929/9021" \
+  -H "Origin: $ORIGIN" -H "Access-Control-Request-Method: GET"
+curl -i -X OPTIONS "http://localhost:5000/api/Ratings" \
+  -H "Origin: $ORIGIN" -H "Access-Control-Request-Method: POST"
+curl -i -X OPTIONS "http://localhost:5000/api/Ratings/929/9021" \
+  -H "Origin: $ORIGIN" -H "Access-Control-Request-Method: DELETE"
+
+# ===== DIRECTORS =====
+curl -i -X OPTIONS "http://localhost:5000/api/Directors" \
+  -H "Origin: $ORIGIN" -H "Access-Control-Request-Method: GET"
+curl -i -X OPTIONS "http://localhost:5000/api/Directors/224" \
+  -H "Origin: $ORIGIN" -H "Access-Control-Request-Method: GET"
+curl -i -X OPTIONS "http://localhost:5000/api/Directors" \
+  -H "Origin: $ORIGIN" -H "Access-Control-Request-Method: POST"
+curl -i -X OPTIONS "http://localhost:5000/api/Directors/224" \
+  -H "Origin: $ORIGIN" -H "Access-Control-Request-Method: PATCH"
+curl -i -X OPTIONS "http://localhost:5000/api/Directors/224" \
+  -H "Origin: $ORIGIN" -H "Access-Control-Request-Method: DELETE"
+
+# ===== MOVIEDIRECTION =====
+curl -i -X OPTIONS "http://localhost:5000/api/MovieDirection" \
+  -H "Origin: $ORIGIN" -H "Access-Control-Request-Method: GET"
+curl -i -X OPTIONS "http://localhost:5000/api/MovieDirection/224/929" \
+  -H "Origin: $ORIGIN" -H "Access-Control-Request-Method: GET"
+curl -i -X OPTIONS "http://localhost:5000/api/MovieDirection" \
+  -H "Origin: $ORIGIN" -H "Access-Control-Request-Method: POST"
+curl -i -X OPTIONS "http://localhost:5000/api/MovieDirection/224/929" \
+  -H "Origin: $ORIGIN" -H "Access-Control-Request-Method: DELETE"

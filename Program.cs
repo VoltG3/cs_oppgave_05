@@ -60,8 +60,8 @@ class Program
         
         var app = builder.Build();
 
-        app.UseCors("DefaultCors");
         app.UseAuthorization();
+        app.UseCors("AllowAll");
         
         app.MapControllers();
         app.MapGet("/", () => "Server OK");
