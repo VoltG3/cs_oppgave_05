@@ -7,6 +7,7 @@ namespace cs_oppgave_05.Models
     public class Actor
     {
         [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         [Column("act_id")]
         public int ActId { get; set; }
         

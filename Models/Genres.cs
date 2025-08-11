@@ -7,6 +7,7 @@ namespace cs_oppgave_05.Models
     public class Genres
     {
         [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         [Column("gen_id")]
         public int GenId { get; set; }
         

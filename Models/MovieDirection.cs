@@ -7,11 +7,11 @@ namespace cs_oppgave_05.Models
     {
         [Column("dir_id")]
         public int DirId { get; set; }
-        
+
         [Column("mov_id")]
         public int MovId { get; set; }
-        
-        // Relation
+
+        // Navigācijas īpašības
         [ForeignKey(nameof(DirId))]
         public virtual Director? Director { get; set; }
 

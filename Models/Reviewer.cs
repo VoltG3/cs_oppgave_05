@@ -7,6 +7,7 @@ namespace cs_oppgave_05.Models
     public class Reviewer
     {
         [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         [Column("rev_id")]
         public int RevId { get; set; }
         

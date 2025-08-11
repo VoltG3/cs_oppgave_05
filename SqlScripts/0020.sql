@@ -1,0 +1,3 @@
+-- ALTER TABLE movies
+--    MODIFY mov_id INT NOT NULL AUTO_INCREMENT;
+

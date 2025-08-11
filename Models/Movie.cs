@@ -8,6 +8,7 @@ namespace cs_oppgave_05.Models
     {
         [Key]
         [Column("mov_id")]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int MovId { get; set; }
 
         [Required]

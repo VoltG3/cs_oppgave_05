@@ -8,6 +8,7 @@ namespace cs_oppgave_05.Models
     public class Director
     {
         [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         [Column("dir_id")]
         public int DirId { get; set; }
 

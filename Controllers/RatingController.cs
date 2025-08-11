@@ -17,26 +17,40 @@ namespace cs_oppgave_05.Data.Controllers
             _context = context;
         }
         
-        // GET: api/rating
+        // GET: api/ratings
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Rating>>> GetAll()
+        public async Task<ActionResult<IEnumerable<Rating>>> GetAll(
+            [FromQuery] int? movId,
+            [FromQuery] int? revId)
         {
-            var ratings = await _context.Ratings.ToListAsync();
-            return Ok(ratings);
+            var query = _context.Ratings
+                .Include(r => r.Movie)
+                .Include(r => r.Reviewer)
+                .AsNoTracking()
+                .AsQueryable();
+
+            if (movId.HasValue && revId.HasValue)
+            {
+                var one = await query.FirstOrDefaultAsync(r => r.MovId == movId && r.RevId == revId);
+                if (one == null) return NotFound();
+                return Ok(one);
+            }
+
+            var list = await query.ToListAsync();
+            return Ok(list);
         }
-        
-        // GET: api/ratings/{id}/{id}
-        [HttpGet("{movId}/{revId}")]
+
+        // GET: api/ratings/{movId}/{revId}
+        [HttpGet("{movId:int}/{revId:int}")]
         public async Task<ActionResult<Rating>> GetById(int movId, int revId)
         {
             var rating = await _context.Ratings
+                .Include(r => r.Movie)
+                .Include(r => r.Reviewer)
+                .AsNoTracking()
                 .FirstOrDefaultAsync(r => r.MovId == movId && r.RevId == revId);
 
-            if (rating == null)
-            {
-                return NotFound();
-            }
-
+            if (rating == null) return NotFound();
             return Ok(rating);
         }
         

@@ -18,26 +18,41 @@ namespace cs_oppgave_05.Data.Controllers
 
         // GET: api/moviegenres
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<MovieGenres>>> GetAll()
+        public async Task<ActionResult<IEnumerable<MovieGenres>>> GetAll(
+            [FromQuery] int? movId,
+            [FromQuery] int? genId)
         {
-            var movieGenres = await _context.MovieGenres.ToListAsync();
-            return Ok(movieGenres);
-        }
-        
-        // GET: api/movie_genres/{id}/{id}
-        [HttpGet("{movId}/{genId}")]
-        public async Task<ActionResult<MovieGenres>> GetById(int movId, int genId)
-        {
-            var movieGenres = await _context.MovieGenres
-                .FirstOrDefaultAsync(mg => mg.MovId == movId && mg.GenId == genId);
+            var query = _context.MovieGenres
+                .Include(mg => mg.Movie)
+                .Include(mg => mg.Genres) 
+                .AsNoTracking()
+                .AsQueryable();
 
-            if (movieGenres == null)
+            if (movId.HasValue && genId.HasValue)
             {
-                return NotFound();
+                var one = await query.FirstOrDefaultAsync(mg => mg.MovId == movId && mg.GenId == genId);
+                if (one == null) return NotFound();
+                return Ok(one);
             }
 
-            return Ok(movieGenres);
+            var list = await query.ToListAsync();
+            return Ok(list);
         }
+
+        // GET: api/moviegenres/{movId}/{genId}
+        [HttpGet("{movId:int}/{genId:int}")]
+        public async Task<ActionResult<MovieGenres>> GetById(int movId, int genId)
+        {
+            var movieGenre = await _context.MovieGenres
+                .Include(mg => mg.Movie)
+                .Include(mg => mg.Genres)
+                .AsNoTracking()
+                .FirstOrDefaultAsync(mg => mg.MovId == movId && mg.GenId == genId);
+
+            if (movieGenre == null) return NotFound();
+            return Ok(movieGenre);
+        }
+
         
         // POST: api/movie_genres
         [HttpPost]

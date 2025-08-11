@@ -19,24 +19,38 @@ namespace cs_oppgave_05.Data.Controllers
         
         // GET: api/movie_casts
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<MovieCast>>> GetAll()
+        public async Task<ActionResult<IEnumerable<MovieCast>>> GetAll(
+            [FromQuery] int? actId,
+            [FromQuery] int? movId)
         {
-            var movieCasts = await _context.MovieCasts.ToListAsync();
-            return Ok(movieCasts);
+            var query = _context.MovieCasts
+                .Include(mc => mc.Movie)
+                .Include(mc => mc.Actor)
+                .AsNoTracking()
+                .AsQueryable();
+
+            if (actId.HasValue && movId.HasValue)
+            {
+                var one = await query.FirstOrDefaultAsync(mc => mc.ActId == actId && mc.MovId == movId);
+                if (one == null) return NotFound();
+                return Ok(one);
+            }
+
+            var list = await query.ToListAsync();
+            return Ok(list);
         }
-        
-        // GET: api/movie_casts/{id}/{id}
-        [HttpGet("{actId}/{movId}")]
+
+        // GET: api/movie_casts/{actId}/{movId}
+        [HttpGet("{actId:int}/{movId:int}")]
         public async Task<ActionResult<MovieCast>> GetById(int actId, int movId)
         {
             var movieCast = await _context.MovieCasts
-                .FirstOrDefaultAsync(mk => mk.ActId == actId && mk.MovId == movId);
+                .Include(mc => mc.Movie)
+                .Include(mc => mc.Actor)
+                .AsNoTracking()
+                .FirstOrDefaultAsync(mc => mc.ActId == actId && mc.MovId == movId);
 
-            if (movieCast == null)
-            {
-                return NotFound();
-            }
-
+            if (movieCast == null) return NotFound();
             return Ok(movieCast);
         }
         
