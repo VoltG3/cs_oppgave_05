@@ -2,6 +2,7 @@ echo ""
 echo "################################################"
 echo "#      CURL TEST 1 - MASTER TABLE - MOVIE      #"
 echo "################################################"
+echo ""
 
 echo ""
 echo "POST [ movie ]"
@@ -25,10 +26,12 @@ echo ""
 curl -X GET "http://localhost:5000/api/Movies/929" \
   -H "Accept: application/json"
 echo ""
-  
+
+echo ""
 echo "###############################################"
 echo "#      CURL TEST 2 - SLAVE TABLE - GENRE      #"
 echo "###############################################"
+echo ""
 
 echo ""
 echo "POST [ genre ]"
@@ -52,10 +55,12 @@ echo ""
 curl -X GET "http://localhost:5000/api/Genres/1014" \
   -H "Accept: application/json"
 echo ""
-  
+
+echo ""  
 echo "###################################################################################"
 echo "#      CURL TEST 2 - RELATIONS - [ movie ] >> [ movie_genres ] << [ genres ]      #"
 echo "###################################################################################"
+echo ""
 
 echo ""
 echo "POST [ movie_genres ]"
@@ -70,9 +75,11 @@ echo "GET [ movie_genres: movie & genres ]"
 echo ""
 curl -X GET "http://localhost:5000/api/MovieGenres?movId=929&genId=1014" -H "Accept: application/json"
 
+echo ""
 echo "###############################################"
 echo "#      CURL TEST 3 - SLAVE TABLE - ACTOR      #"
 echo "###############################################"
+echo ""
 
 echo ""
 echo "POST [ actor ]"
@@ -96,9 +103,11 @@ curl -X GET "http://localhost:5000/api/Actors/125" \
   -H "Accept: application/json"
 echo ""
 
+echo ""
 echo "################################################################################"
 echo "#      CURL TEST 3 - RELATIONS - [ movie ] >> [ movie_cast ] << [ actor ]      #"
 echo "################################################################################"
+echo ""
 
 echo ""
 echo "POST [ movie_cast ]"
@@ -114,9 +123,11 @@ echo ""
 curl -X GET "http://localhost:5000/api/MovieCasts?actId=125&movId=929" -H "Accept: application/json"
 echo ""
 
+echo ""
 echo "##################################################"
 echo "#      CURL TEST 4 - SLAVE TABLE - REVIEWER      #"
 echo "##################################################"
+echo ""
 
 echo ""
 echo "POST [ reviewer ]"
@@ -141,9 +152,11 @@ curl -X GET "http://localhost:5000/api/Reviewers/9021" \
   -H "Accept: application/json"
 echo ""
 
+echo ""
 echo "###############################################################################"
 echo "#      CURL TEST 4 - RELATIONS - [ movie ] >> [ rating ] << [ reviewer ]      #"
 echo "###############################################################################"
+echo ""
 
 echo ""
 echo "POST [ reviewer ]"
@@ -159,9 +172,11 @@ echo ""
 curl -X GET "http://localhost:5000/api/Ratings?movId=929&revId=9021" -H "Accept: application/json"
 echo ""
 
+echo ""
 echo "##################################################"
 echo "#      CURL TEST 5 - SLAVE TABLE - DIRECTOR      #"
 echo "##################################################"
+echo ""
 
 echo ""
 echo "POST [ director ]"
@@ -186,9 +201,11 @@ curl -X GET "http://localhost:5000/api/Directors/224" \
   -H "Accept: application/json"
 echo ""
 
+echo ""
 echo "##################################################################################"
 echo "#      CURL TEST 5 - RELATIONS - [ movie ] >> [ movie_genres ] << [ genres]      #"
 echo "##################################################################################"
+echo ""
 
 echo ""
 echo "POST [ movie_genres ]"

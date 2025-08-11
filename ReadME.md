@@ -10,7 +10,8 @@
 | oppgave05_V3 | [CRUD](#crud)                                                    |
 |              | [Issues](#issues)                                                |
 | img          | [Relation Diagram](#relation-diagram)                            |
-|              | [Requests](#curl-tests)                                          |
+|              | [Curl Tests - Relations](#curl-tests-relations)                  |
+|              | [Curl Tests - Options](#curl-tests-options) |                                           
 
 
 #### Dependencies
@@ -168,13 +169,13 @@ dotnet add package Microsoft.EntityFrameworkCore --version 8.0.13
 #### Relation Diagram
 ![img](https://github.com/VoltG3/cs_oppgave_05/blob/master/01.png)
 
-## Curl Tests
+## Curl Tests Relations
 ___
 #### Execute 'cur_test_scripts.sh'
 !Imortant 'Run once!'
 ```sh
-chmod +x curl_tests_script.sh
-sh ./curl_tests_script.sh
+chmod +x curl_tests_script_relations.sh
+sh ./curl_tests_script_relations.sh
 ```
 
 #### CURL TEST 1 - MASTER TABLE - MOVIE
@@ -382,4 +383,13 @@ echo "GET [ movie_directions: movie-director ]"
 echo ""
 curl -X GET "http://localhost:5000/api/MovieDirection?dirId=224&movId=929" -H "Accept: application/json"
 echo ""
+```
+
+## Curl Tests Options
+___
+#### Execute 'cur_test_scripts.sh'
+
+```sh
+chmod +x curl_tests_script_options.sh
+sh ./curl_tests_script_options.sh
 ```
