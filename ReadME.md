@@ -10,8 +10,7 @@
 | oppgave05_V3 | [CRUD](#crud)                                                    |
 |              | [Issues](#issues)                                                |
 | img          | [Relation Diagram](#relation-diagram)                            |
-|              | [Requests](#requests)                                            |
-|              | [DTOs](#dtos)                                                    |
+|              | [Requests](#curl-tests)                                          |
 
 
 #### Dependencies
@@ -169,248 +168,218 @@ dotnet add package Microsoft.EntityFrameworkCore --version 8.0.13
 #### Relation Diagram
 ![img](https://github.com/VoltG3/cs_oppgave_05/blob/master/01.png)
 
-#### Requests
+## Curl Tests
+___
+#### Execute 'cur_test_scripts.sh'
+!Imortant 'Run once!'
 ```sh
-curl http://localhost:5000/api/directors
-curl http://localhost:5000/api/directors/205
-
-curl http://localhost:5000/api/reviewers
-curl http://localhost:5000/api/reviewers/9020
-
-curl http://localhost:5000/api/movieDirection
-curl http://localhost:5000/api/movieDirection/201/901
-
-curl http://localhost:5000/api/movieCasts
-curl http://localhost:5000/api/movieCasts/101/901
-
-curl http://localhost:5000/api/movies
-curl http://localhost:5000/api/movies/909
-
-curl http://localhost:5000/api/ratings
-curl http://localhost:5000/api/ratings/921/9018
-
-curl http://localhost:5000/api/actors
-curl http://localhost:5000/api/actors/105
-
-curl http://localhost:5000/api/movieGenres
-curl http://localhost:5000/api/movieGenres/904/1013
-
-curl http://localhost:5000/api/genres
-curl http://localhost:5000/api/genres/1013
+chmod +x curl_tests_script.sh
+sh ./curl_tests_script.sh
 ```
 
-#### DTOs
-`movie_direction`
-```sh
-curl -v -X POST "http://localhost:5000/api/movieDirection" \
-  -H "Content-Type: application/json" \
-  -d '{"dirId":999,"movId":999}'
-```
-
-`movie_genres`
-```sh
-curl -v -X POST "http://localhost:5000/api/movieGenres" \
-  -H "Content-Type: application/json" \
-  -d '{"movId":999,"genId":999}'
-```
-
-`rating`
-```sh
-curl -v -X POST "http://localhost:5000/api/Ratings" \
-  -H "Content-Type: application/json" \
-  -d '{"movId":999,"revId":999,"revStars":44,"numOfRatings":44}'
-```
-
-`movie_cast`
-```sh
-curl -v -X POST "http://localhost:5000/api/movieCasts" \
-  -H "Content-Type: application/json" \
-  -d '{"actId":999,"movId":999,"role":"Main Character"}'
-```
-
-## curl test 1
-#### [ movie ]
+#### CURL TEST 1 - MASTER TABLE - MOVIE
 
 ```sh
-echo
-echo POST [ movie ]
-echo
+echo ""
+echo "POST [ movie ]"
+echo ""
 curl -X POST "http://localhost:5000/api/Movies" \
   -H "Content-Type: application/json" \
   -d '{"movTitle":"Movie_929","movYear":2025,"movTime":120,"movLang":"EN","movDtRel":"2025-08-08","movRelCountry":"US"}'
+echo ""
   
-echo
-echo PACH [ movie ]
-echo
+echo ""
+echo "PACH [ movie ]"
+echo ""
 curl -X PATCH "http://localhost:5000/api/Movies/929" \
   -H "Content-Type: application/json" \
   -d '{"movTitle":"Movie_PACHED_929"}'
+echo ""
   
-echo
-echo GET
-echo
+echo ""
+echo "GET [ movie ]"
+echo ""
 curl -X GET "http://localhost:5000/api/Movies/929" \
   -H "Accept: application/json"
+echo ""
 ```
 
-#### [ genres ]
+#### CURL TEST 2 - SLAVE TABLE - GENRES
 
 ```sh
-echo
-echo POST [ genre ]
-echo
+echo ""
+echo "POST [ genre ]"
+echo ""
 curl -X POST "http://localhost:5000/api/Genres" \
   -H "Content-Type: application/json" \
   -d '{"genTitle":"Genre_929"}'
+echo ""
 
-echo
-echo PATCH [ genre ]
-echo
+echo ""
+echo "PATCH [ genre ]"
+echo ""
 curl -X PATCH "http://localhost:5000/api/Genres/1014" \
   -H "Content-Type: application/json" \
   -d '{"genTitle":"Genre_PACHED_929"}'
+echo ""
 
-echo
-echo GET
-echo
+echo ""
+echo "GET [ genre ]"
+echo ""
 curl -X GET "http://localhost:5000/api/Genres/1014" \
   -H "Accept: application/json"
+echo ""
 ```
 
-#### [ movie ] --> [ movie_genres] <-- [ genres ]
+#### CURL TEST 2 - RELATIONS - [ movie ] >> [ movie_genres ] << [ genres]
 
 ```sh
-echo
-echo POST
-echo
+echo ""
+echo "POST [ movie_genres ]"
+echo ""
 curl -X POST "http://localhost:5000/api/MovieGenres" \
   -H "Content-Type: application/json" \
   -d '{"movId":929,"genId":1014}'
+echo ""
   
-echo
-echo GET [ movie_genres: movie-genres ]
-echo
+echo ""
+echo "GET [ movie_genres: movie & genres ]"
+echo ""
 curl -X GET "http://localhost:5000/api/MovieGenres?movId=929&genId=1014" -H "Accept: application/json"
+echo ""
 ```
 
-## curl test 2
-#### [ actor ]
+#### CURL TEST 3 - SLAVE TABLE ACTOR
 
 ```sh
-echo
-echo POST [ actor ]
-echo
+echo ""
+echo "POST [ actor ]"
+echo ""
 curl -X POST "http://localhost:5000/api/Actors" \
   -H "Content-Type: application/json" \
   -d '{"actFname":"ActorFname_929","actLname":"ActorLname_929","actGender":"M"}'
+echo ""
 
-echo
-echo PATCH [ genre ]
-echo
+echo ""
+echo "PATCH [ actor ]"
+echo ""
 curl -X PATCH "http://localhost:5000/api/Actors/125" \
   -H "Content-Type: application/json" \
   -d '{"actFname":"ActorFname_PATCH_929"}'
+echo ""
 
-echo
-echo GET
-echo
+echo ""
+echo "GET [ actor ]"
+echo ""
 curl -X GET "http://localhost:5000/api/Actors/125" \
   -H "Accept: application/json"
+echo ""
 ```
 
-#### [ movie ] --> [ movie_cast ] <-- [ reviewers ]
+#### CURL TEST 3 - RELATIONS - [ movie ] >> [ movie_cast ] << [ actor ]
+
 ```sh
-echo
-echo POST
-echo
+echo ""
+echo "POST [ movie_cast ]"
+echo ""
 curl -X POST "http://localhost:5000/api/MovieCasts" \
   -H "Content-Type: application/json" \
   -d '{"actId":125,"movId":929,"role":"Role_929"}'
+echo ""
 
-echo
-echo GET [ movie_cast: movie-actor ]
-echo
+echo ""
+echo "GET [ movie_cast: mmovie & actor ]"
+echo ""
 curl -X GET "http://localhost:5000/api/MovieCasts?actId=125&movId=929" -H "Accept: application/json"
+echo ""
 ```
 
-## curl test 3
-#### [ reviewer ]
+#### CURL TEST 4 - SLAVE TABLE - REVIEWER
 
 ```sh
-echo
-echo POST [ reviewer ]
-echo
+echo ""
+echo "POST [ reviewer ]"
+echo ""
 curl -X POST "http://localhost:5000/api/Reviewers" \
   -H "Content-Type: application/json" \
   -d '{"revName":"revName_929"}'
+echo ""
 
-echo
-echo PATCH [ reviewer ]
-echo
+echo ""
+echo "PATCH [ reviewer ]"
+echo ""
 curl -X PATCH "http://localhost:5000/api/Reviewers/9021" \
   -H "Content-Type: application/json" \
   -d '{"revName":"revName_PATCHED_929"}'
+echo ""
 
-echo
-echo GET
-echo
+echo ""
+echo "GET [ reviewer ]"
+echo ""
 curl -X GET "http://localhost:5000/api/Reviewers/9021" \
   -H "Accept: application/json"
+echo ""
 ```
 
-#### [ movie ] --> [ rating ] <-- [ reviewers ]
+#### CURL TEST 4 - RELATIONS - [ movie ] >> [ rating ] << [ reviewer ]
 
 ```sh
-echo
-echo POST
-echo
+echo ""
+echo "POST [ reviewer ]"
+echo ""
 curl -X POST "http://localhost:5000/api/Ratings" \
   -H "Content-Type: application/json" \
   -d '{"movId":929,"revId":9021,"revStars":4.8,"numOfRatings":120}'
+echo ""
 
-echo
-echo GET [ rating: movie-reviewer ]
-echo
+echo ""
+echo "GET [ rating ]"
+echo ""
 curl -X GET "http://localhost:5000/api/Ratings?movId=929&revId=9021" -H "Accept: application/json"
+echo ""
 ```
 
-## curl test 4
-#### [ reviewer ]
+#### CURL TEST 5 - SLAVE TABLE - DIRECTOR
 
 ```sh
-echo
-echo POST [ director ]
-echo
+echo ""
+echo "POST [ director ]"
+echo ""
 curl -X POST "http://localhost:5000/api/Directors" \
   -H "Content-Type: application/json" \
   -d '{"dirFname":"dirFname_929", "dirLname":"dirLname_929"}'
+echo ""
 
-echo
-echo PATCH [ reviewer ]
-echo
+echo ""
+echo "PATCH [ director ]"
+echo ""
 curl -X PATCH "http://localhost:5000/api/Directors/224" \
   -H "Content-Type: application/json" \
   -d '{"dirFname":"dirFname_PATCHED_929"}'
+echo ""
 
-echo
-echo GET
-echo
+echo ""
+echo "GET [ director ]"
+echo ""
 curl -X GET "http://localhost:5000/api/Directors/224" \
   -H "Accept: application/json"
+echo ""
 ```
 
-#### [ movie ] --> [ movie_direction ] <-- [ director ]
+#### CURL TEST 5 - RELATIONS - [ movie ] >> [ movie_genres ] << [ genres]
 
 ```sh
-echo
-echo POST
-echo
+echo ""
+echo "POST [ movie_genres ]"
+echo ""
 curl -X POST "http://localhost:5000/api/MovieDirection" \
   -H "Content-Type: application/json" \
   -d '{"dirId":224,"movId":929}'
+echo ""
 
-echo
-echo GET [ movie_directions: movie-director ]
-echo
+echo ""
+echo "GET [ movie_directions: movie-director ]"
+echo ""
 curl -X GET "http://localhost:5000/api/MovieDirection?dirId=224&movId=929" -H "Accept: application/json"
+echo ""
 ```
