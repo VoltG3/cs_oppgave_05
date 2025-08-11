@@ -89,6 +89,27 @@ namespace cs_oppgave_05.Data.Controllers
             await _context.SaveChangesAsync();
             return NoContent();
         }
+        
+        // DELETE
+        [HttpDelete("{movId:int}/{revId:int}")]
+        public async Task<IActionResult> Delete(int movId, int revId)
+        {
+            var entity = await _context.Ratings.FindAsync(new object[] { movId, revId });
+            if (entity == null) return NotFound();
+            _context.Ratings.Remove(entity);
+            await _context.SaveChangesAsync();
+            return NoContent();
+        }
 
+        [HttpDelete]
+        public async Task<IActionResult> Delete([FromBody] RatingDeleteDto dto)
+        {
+            var entity = await _context.Ratings.FindAsync(new object[] { dto.MovId, dto.RevId });
+            if (entity == null) return NotFound();
+            _context.Ratings.Remove(entity);
+            await _context.SaveChangesAsync();
+            return NoContent();
+        }
+        
     }
 }

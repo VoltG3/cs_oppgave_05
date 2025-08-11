@@ -1,3 +1,4 @@
+using cs_oppgave_05.Data.DTOs.MovieCast;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using cs_oppgave_05.Models;
@@ -85,6 +86,28 @@ namespace cs_oppgave_05.Data.Controllers
             await _context.SaveChangesAsync();
             return NoContent();
         }
+        
+        // DELETE
+        [HttpDelete("{actId:int}/{movId:int}")]
+        public async Task<IActionResult> Delete(int actId, int movId)
+        {
+            var entity = await _context.MovieCasts.FindAsync(new object[] { actId, movId });
+            if (entity == null) return NotFound();
+            _context.MovieCasts.Remove(entity);
+            await _context.SaveChangesAsync();
+            return NoContent();
+        }
 
+        // DELETE DTO
+        [HttpDelete]
+        public async Task<IActionResult> Delete([FromBody] MovieCastDeleteDto dto)
+        {
+            var entity = await _context.MovieCasts.FindAsync(new object[] { dto.ActId, dto.MovId });
+            if (entity == null) return NotFound();
+            _context.MovieCasts.Remove(entity);
+            await _context.SaveChangesAsync();
+            return NoContent();
+        }
+        
     }
 }

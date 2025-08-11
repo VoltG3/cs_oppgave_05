@@ -1,3 +1,4 @@
+using cs_oppgave_05.Data.DTOs.MovieDirection;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using cs_oppgave_05.Models;
@@ -82,6 +83,29 @@ namespace cs_oppgave_05.Data.Controllers
         public IActionResult Patch(int dirId, int movId)
         {
             return BadRequest("movie_direction has no updatable fields; change of keys is not allowed.");
+        }
+        
+        // DELETE
+        // Ceļa parametri (ieteicamākais)
+        [HttpDelete("{dirId:int}/{movId:int}")]
+        public async Task<IActionResult> Delete(int dirId, int movId)
+        {
+            var entity = await _context.MovieDirections.FindAsync(new object[] { dirId, movId });
+            if (entity == null) return NotFound();
+            _context.MovieDirections.Remove(entity);
+            await _context.SaveChangesAsync();
+            return NoContent();
+        }
+
+        // DELETE DTO
+        [HttpDelete]
+        public async Task<IActionResult> Delete([FromBody] MovieDirectionDeleteDto dto)
+        {
+            var entity = await _context.MovieDirections.FindAsync(new object[] { dto.DirId, dto.MovId });
+            if (entity == null) return NotFound();
+            _context.MovieDirections.Remove(entity);
+            await _context.SaveChangesAsync();
+            return NoContent();
         }
         
     }

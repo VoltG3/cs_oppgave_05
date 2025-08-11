@@ -1,3 +1,4 @@
+using cs_oppgave_05.Data.DTOs.Actor;
 using cs_oppgave_05.Data.DTOs.Actors;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -72,6 +73,28 @@ namespace cs_oppgave_05.Data.Controllers
             await _context.SaveChangesAsync();
             return NoContent();
         }
+        
+        // DELETE :
+        [HttpDelete("{id:int}")]
+        public async Task<IActionResult> Delete(int id)
+        {
+            var entity = await _context.Actors.FindAsync(id);
+            if (entity == null) return NotFound();
+            _context.Actors.Remove(entity);
+            await _context.SaveChangesAsync();
+            return NoContent();
+        }
 
+        // DELETE DTO
+        [HttpDelete]
+        public async Task<IActionResult> Delete([FromBody] DeleteByIdDto dto)
+        {
+            var entity = await _context.Actors.FindAsync(dto.Id);
+            if (entity == null) return NotFound();
+            _context.Actors.Remove(entity);
+            await _context.SaveChangesAsync();
+            return NoContent();
+        }
+        
     }
 }

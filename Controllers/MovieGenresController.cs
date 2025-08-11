@@ -79,6 +79,28 @@ namespace cs_oppgave_05.Data.Controllers
         {
             return BadRequest("movie_genres has no updatable fields; change of keys is not allowed.");
         }
+        
+        // DELETE
+        [HttpDelete("{movId:int}/{genId:int}")]
+        public async Task<IActionResult> Delete(int movId, int genId)
+        {
+            var entity = await _context.MovieGenres.FindAsync(new object[] { movId, genId });
+            if (entity == null) return NotFound();
+            _context.MovieGenres.Remove(entity);
+            await _context.SaveChangesAsync();
+            return NoContent();
+        }
 
+        // DELETE DTO
+        [HttpDelete]
+        public async Task<IActionResult> Delete([FromBody] MovieGenresDeleteDto dto)
+        {
+            var entity = await _context.MovieGenres.FindAsync(new object[] { dto.MovId, dto.GenId });
+            if (entity == null) return NotFound();
+            _context.MovieGenres.Remove(entity);
+            await _context.SaveChangesAsync();
+            return NoContent();
+        }
+        
     }
 }
