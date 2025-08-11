@@ -1,3 +1,4 @@
+using cs_oppgave_05.Data.DTOs.Genres;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using cs_oppgave_05.Models;
@@ -39,15 +40,34 @@ namespace cs_oppgave_05.Data.Controllers
         
         // POST: api/genres
         [HttpPost]
-        public async Task<ActionResult<Director>> Create([FromBody] Genres genres)
+        public async Task<ActionResult<Genres>> Create([FromBody] CreateGenreDto dto)
         {
             if (!ModelState.IsValid)
                 return ValidationProblem(ModelState);
 
-            _context.Genres.Add(genres);
+            var genre = new Genres
+            {
+                GenTitle = dto.GenTitle
+            };
+
+            _context.Genres.Add(genre);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction(nameof(GetById), new { id = genres.GenId }, genres);
+            return CreatedAtAction(nameof(GetById), new { id = genre.GenId }, genre);
         }
+        
+        // PATCH:
+        [HttpPatch("{id:int}")]
+        public async Task<IActionResult> Patch(int id, [FromBody] System.Text.Json.JsonElement changes)
+        {
+            var entity = await _context.Genres.FindAsync(id);
+            if (entity == null) return NotFound();
+
+            if (changes.TryGetProperty("genTitle", out var t)) entity.GenTitle = t.GetString();
+
+            await _context.SaveChangesAsync();
+            return NoContent();
+        }
+
     }
 }

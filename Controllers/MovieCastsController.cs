@@ -71,5 +71,20 @@ namespace cs_oppgave_05.Data.Controllers
 
             return CreatedAtAction(nameof(GetById), new { actId = movieCast.ActId, movId = movieCast.MovId }, movieCast);
         }
+        
+        // PATCH:
+        
+        [HttpPatch("{actId:int}/{movId:int}")]
+        public async Task<IActionResult> Patch(int actId, int movId, [FromBody] UpdateMovieCastDto dto)
+        {
+            var mc = await _context.MovieCasts.FirstOrDefaultAsync(x => x.ActId == actId && x.MovId == movId);
+            if (mc == null) return NotFound();
+
+            if (dto.Role != null) mc.Role = dto.Role;
+
+            await _context.SaveChangesAsync();
+            return NoContent();
+        }
+
     }
 }

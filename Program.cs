@@ -52,9 +52,9 @@ class Program
         builder.Services.AddCors(opts =>
         {
             opts.AddPolicy("DefaultCors", p => p
-                    .WithOrigins("http://localhost:5000") // vai "*", ja tiešām vajag visiem
+                    .WithOrigins("http://localhost:5000")
                     .AllowAnyHeader()
-                    .AllowAnyMethod()   // GET, POST, PUT, DELETE, OPTIONS utt.
+                    .AllowAnyMethod()
             );
         });
         

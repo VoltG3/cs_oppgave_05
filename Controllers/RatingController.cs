@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using cs_oppgave_05.Models;
 using cs_oppgave_05.Data.DTOs.Rating;
+using cs_oppgave_05.Data.DTOs.Rating.Ratings;
 
 namespace cs_oppgave_05.Data.Controllers
 {
@@ -73,6 +74,20 @@ namespace cs_oppgave_05.Data.Controllers
             return CreatedAtAction(nameof(GetById),
                 new { movId = rating.MovId, revId = rating.RevId },
                 rating);
+        }
+
+        // PATCH:
+        [HttpPatch("{movId:int}/{revId:int}")]
+        public async Task<IActionResult> Patch(int movId, int revId, [FromBody] UpdateRatingDto dto)
+        {
+            var r = await _context.Ratings.FirstOrDefaultAsync(x => x.MovId == movId && x.RevId == revId);
+            if (r == null) return NotFound();
+
+            if (dto.RevStars.HasValue) r.RevStars = dto.RevStars;
+            if (dto.NumOfRatings.HasValue) r.NumOfRatings = dto.NumOfRatings;
+
+            await _context.SaveChangesAsync();
+            return NoContent();
         }
 
     }

@@ -76,6 +76,13 @@ namespace cs_oppgave_05.Data.Controllers
                 new { dirId = movieDirection.DirId, movId = movieDirection.MovId },
                 movieDirection);
         }
-
+        
+        // PATCH:
+        [HttpPatch("{dirId:int}/{movId:int}")]
+        public IActionResult Patch(int dirId, int movId)
+        {
+            return BadRequest("movie_direction has no updatable fields; change of keys is not allowed.");
+        }
+        
     }
 }

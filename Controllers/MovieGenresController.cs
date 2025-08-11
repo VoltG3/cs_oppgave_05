@@ -72,6 +72,13 @@ namespace cs_oppgave_05.Data.Controllers
                 new { movId = movieGenre.MovId, genId = movieGenre.GenId },
                 movieGenre);
         }
+        
+        // PATCH:
+        [HttpPatch("{movId:int}/{genId:int}")]
+        public IActionResult Patch(int movId, int genId)
+        {
+            return BadRequest("movie_genres has no updatable fields; change of keys is not allowed.");
+        }
 
     }
 }

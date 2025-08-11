@@ -1,3 +1,4 @@
+using cs_oppgave_05.Data.DTOs.Reviewers;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using cs_oppgave_05.Models;
@@ -39,15 +40,34 @@ namespace cs_oppgave_05.Data.Controllers
         
         // POST: api/reviewers
         [HttpPost]
-        public async Task<ActionResult<Reviewer>> Create([FromBody] Reviewer reviewer)
+        public async Task<ActionResult<Reviewer>> Create([FromBody] CreateReviewerDto dto)
         {
             if (!ModelState.IsValid)
                 return ValidationProblem(ModelState);
+
+            var reviewer = new Reviewer
+            {
+                RevName = dto.RevName
+            };
 
             _context.Reviewers.Add(reviewer);
             await _context.SaveChangesAsync();
 
             return CreatedAtAction(nameof(GetById), new { id = reviewer.RevId }, reviewer);
         }
+        
+        // PATCH:
+        [HttpPatch("{id:int}")]
+        public async Task<IActionResult> Patch(int id, [FromBody] System.Text.Json.JsonElement changes)
+        {
+            var entity = await _context.Reviewers.FindAsync(id);
+            if (entity == null) return NotFound();
+
+            if (changes.TryGetProperty("revName", out var n)) entity.RevName = n.GetString();
+
+            await _context.SaveChangesAsync();
+            return NoContent();
+        }
+
     }
 }
