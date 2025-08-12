@@ -1,8 +1,9 @@
-using cs_oppgave_05.Data.DTOs.Actor;
+using cs_oppgave_05.Data.DTOs.Movie;
 using cs_oppgave_05.Data.DTOs.Movies;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using cs_oppgave_05.Models;
+using DeleteByIdDto = cs_oppgave_05.Data.DTOs.Actor.DeleteByIdDto;
 
 namespace cs_oppgave_05.Data.Controllers
 {
@@ -100,6 +101,64 @@ namespace cs_oppgave_05.Data.Controllers
             _context.Movies.Remove(entity);
             await _context.SaveChangesAsync();
             return NoContent();
+        }
+        
+        // READ only all TAble
+        [HttpGet("{id}/details")]
+        public async Task<ActionResult<MovieDetailsDto>> GetMovieDetails(int id, [FromQuery] string? include)
+        {
+            // Bāzes vaicājums
+            var baseQuery = _context.Movies.Where(m => m.MovId == id);
+
+            // Dinamiskie Include (ja gribi mazāk datu pēc pieprasījuma)
+            var parts = (include ?? "")
+                .Split(',', StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries)
+                .Select(p => p.ToLower())
+                .ToHashSet();
+
+            // Projekcija uz DTO (bez tuple!)
+            var query = baseQuery.Select(m => new MovieDetailsDto(
+                m.MovId,
+                m.MovTitle,
+                m.MovYear,
+                m.MovTime,
+                m.MovLang,
+                m.MovDtRel,
+                m.MovRelCountry,
+                // genres
+                (parts.Count == 0 || parts.Contains("genres"))
+                    ? m.MovieGenres!.Select(mg => mg.Genres!.GenTitle).ToList()
+                    : new List<string>(),
+                // directors
+                (parts.Count == 0 || parts.Contains("directors"))
+                    ? m.MovieDirections!.Select(md => new DirectorDto(
+                        md.DirId,
+                        md.Director!.DirFname,
+                        md.Director!.DirLname
+                    )).ToList()
+                    : new List<DirectorDto>(),
+                // cast
+                (parts.Count == 0 || parts.Contains("cast"))
+                    ? m.MovieCasts!.Select(mc => new CastDto(
+                        mc.ActId,
+                        mc.Actor!.ActFname,     
+                        mc.Actor!.ActLname,
+                        mc.Actor!.ActGender
+                    )).ToList()
+                    : new List<CastDto>(),
+                // ratings
+                (parts.Count == 0 || parts.Contains("ratings"))
+                    ? m.Ratings!.Select(r => new RatingDto(
+                        r.RevId,
+                        r.RevStars,
+                        r.NumOfRatings
+                    )).ToList()
+                    : new List<RatingDto>()
+            )).AsNoTracking();
+
+            var dto = await query.FirstOrDefaultAsync();
+            if (dto == null) return NotFound();
+            return Ok(dto);
         }
         
     }

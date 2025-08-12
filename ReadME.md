@@ -367,7 +367,7 @@ curl -X GET "http://localhost:5000/api/Directors/224" \
 echo ""
 ```
 
-#### CURL TEST 5 - RELATIONS - [ movie ] >> [ movie_genres ] << [ genres]
+#### CURL TEST 5 - RELATIONS - [ movie ] >> [ movie_direction ] << [ director ]
 
 ```sh
 echo ""
