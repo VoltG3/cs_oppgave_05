@@ -1,3 +1,4 @@
+
 using Microsoft.EntityFrameworkCore;
 using cs_oppgave_05.Models;
 
