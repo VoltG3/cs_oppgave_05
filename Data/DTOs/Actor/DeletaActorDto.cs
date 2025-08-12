@@ -1,5 +1,5 @@
 
-namespace cs_oppgave_05.Data.DTOs.Actor
+namespace cs_oppgave_05.Data.DTOs.Actors
 {
     public sealed class DeleteByIdDto
     {

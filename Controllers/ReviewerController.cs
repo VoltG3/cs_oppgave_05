@@ -1,4 +1,4 @@
-using cs_oppgave_05.Data.DTOs.Actor;
+using cs_oppgave_05.Data.DTOs.Actors;
 using cs_oppgave_05.Data.DTOs.Reviewers;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
