@@ -8,11 +8,11 @@ namespace cs_oppgave_05.Api.Actors
 {
     [ApiController]
     [Route("api/actors")]
-    public class ActorsReadController : ControllerBase, IActorReadApi
+    public class ActorReadController : ControllerBase, IActorReadApi
     {
         private readonly AppDbContext _context;
 
-        public ActorsReadController(AppDbContext context)
+        public ActorReadController(AppDbContext context)
         {
             _context = context;
         }
