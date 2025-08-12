@@ -1,5 +1,5 @@
 
-namespace cs_oppgave_05.Data.DTOs.Reviewers
+namespace cs_oppgave_05.Data.DTOs.Reviewer
 {
     public class UpdateReviewerDto
     {
