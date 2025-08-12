@@ -2,9 +2,9 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc;
 using cs_oppgave_05.Models;
 using cs_oppgave_05.Api.MovieDirections.Contracts;
+using cs_oppgave_05.Api.MovieDirections.Dtos;
+using cs_oppgave_05.Api.MovieDirections.Dtos.Contracts;
 using cs_oppgave_05.Data;
-using cs_oppgave_05.Data.DTOs.MovieDirections;
-using DeleteDto = cs_oppgave_05.Data.DTOs.MovieDirection.MovieDirectionDeleteDto;
 
 namespace cs_oppgave_05.Api.MovieDirections
 {
@@ -72,7 +72,7 @@ namespace cs_oppgave_05.Api.MovieDirections
         [HttpDelete]
         [ProducesResponseType(204)]
         [ProducesResponseType(404)]
-        public async Task<IActionResult> DeleteByBody([FromBody] DeleteDto dto)
+        public async Task<IActionResult> DeleteByBody([FromBody] MovieDirectionDeleteDto dto)
         {
             var entity = await _context.MovieDirections.FindAsync(new object[] { dto.DirId, dto.MovId });
             if (entity == null) return NotFound();

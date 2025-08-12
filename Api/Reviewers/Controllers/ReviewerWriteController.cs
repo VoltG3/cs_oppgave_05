@@ -1,15 +1,15 @@
+using cs_oppgave_05.Api._Shared.Dtos;
 using Microsoft.AspNetCore.Mvc;
 using cs_oppgave_05.Models;
 using cs_oppgave_05.Api.Reviewers.Contracts;
+using cs_oppgave_05.Api.Reviewers.Dtos;
 using cs_oppgave_05.Data;
-using cs_oppgave_05.Data.DTOs.Reviewer;
-using cs_oppgave_05.Data.DTOs.Reviewers;
 
 namespace cs_oppgave_05.Api.Reviewers
 {
     [ApiController]
     [Route("api/reviewers")]
-    public class ReviewersWriteController : ControllerBase //, IReviewerWriteApi
+    public class ReviewersWriteController : ControllerBase, IReviewerWriteApi
     {
         private readonly AppDbContext _context;
 

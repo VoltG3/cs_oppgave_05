@@ -1,7 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using cs_oppgave_05.Models;
-using cs_oppgave_05.Data.DTOs.Rating;
-using cs_oppgave_05.Data.DTOs.Rating.Ratings;
+using cs_oppgave_05.Api.Ratings.Dtos;
 
 namespace cs_oppgave_05.Api.Ratings.Contracts
 {

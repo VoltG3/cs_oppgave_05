@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using cs_oppgave_05.Models;
-using cs_oppgave_05.Data.DTOs.MovieDirections;
-using cs_oppgave_05.Data.DTOs.MovieDirection; 
+using cs_oppgave_05.Api.MovieDirections.Dtos;
+using cs_oppgave_05.Api.MovieDirections.Dtos.Contracts;
 
 namespace cs_oppgave_05.Api.MovieDirections.Contracts
 {
