@@ -14,7 +14,7 @@ namespace cs_oppgave_05.Api.Genres.Contracts
         /// REQUEST (browser-friendly):
         /// GET /api/genres
         /// </remarks>
-        Task<ActionResult<IEnumerable<Models.Genres>>> GetAll();
+        Task<ActionResult<IEnumerable<Entities.Genres>>> GetAll();
 
         /// <summary>
         /// Returns a single genre by its ID.
@@ -24,6 +24,6 @@ namespace cs_oppgave_05.Api.Genres.Contracts
         /// GET /api/genres/{id}
         /// Example: GET /api/genres/7
         /// </remarks>
-        Task<ActionResult<Models.Genres>> GetById(int id);
+        Task<ActionResult<Entities.Genres>> GetById(int id);
     }
 }

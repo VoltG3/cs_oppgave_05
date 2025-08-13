@@ -1,5 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
-using cs_oppgave_05.Models;
+using cs_oppgave_05.Entities;
 using cs_oppgave_05.Api.Directors.Contracts;
 using cs_oppgave_05.Api.Directors.Dtos;
 using cs_oppgave_05.Data;

@@ -19,13 +19,13 @@ namespace cs_oppgave_05.Api.Genres
 
         // POST: /api/genres
         [HttpPost]
-        [ProducesResponseType(typeof(Models.Genres), 201)]
+        [ProducesResponseType(typeof(Entities.Genres), 201)]
         [ProducesResponseType(400)]
-        public async Task<ActionResult<Models.Genres>> Create([FromBody] CreateGenreDto dto)
+        public async Task<ActionResult<Entities.Genres>> Create([FromBody] CreateGenreDto dto)
         {
             if (!ModelState.IsValid) return ValidationProblem(ModelState);
 
-            var genre = new Models.Genres
+            var genre = new Entities.Genres
             {
                 GenTitle = dto.GenTitle
             };

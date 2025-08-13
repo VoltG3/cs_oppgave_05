@@ -1,7 +1,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace cs_oppgave_05.Models
+namespace cs_oppgave_05.Entities
 {
     [Table("genres")]
     public class Genres

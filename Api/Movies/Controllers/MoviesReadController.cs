@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using cs_oppgave_05.Models;
+using cs_oppgave_05.Entities;
 using cs_oppgave_05.Api.Movies.Contracts;
 using cs_oppgave_05.Data;
 using cs_oppgave_05.Api.Movies.Dtos;

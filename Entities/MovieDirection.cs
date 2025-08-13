@@ -1,6 +1,6 @@
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace cs_oppgave_05.Models
+namespace cs_oppgave_05.Entities
 {
     [Table("movie_direction")]
     public class MovieDirection

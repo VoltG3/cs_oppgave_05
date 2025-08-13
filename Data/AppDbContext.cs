@@ -1,6 +1,6 @@
 
 using Microsoft.EntityFrameworkCore;
-using cs_oppgave_05.Models;
+using cs_oppgave_05.Entities;
 
 namespace cs_oppgave_05.Data;
     

@@ -18,8 +18,8 @@ namespace cs_oppgave_05.Api.MovieGenres
 
         // GET: /api/movie_genres
         [HttpGet]
-        [ProducesResponseType(typeof(IEnumerable<Models.MovieGenres>), 200)]
-        public async Task<ActionResult<IEnumerable<Models.MovieGenres>>> GetAll([FromQuery] int? movId, [FromQuery] int? genId)
+        [ProducesResponseType(typeof(IEnumerable<Entities.MovieGenres>), 200)]
+        public async Task<ActionResult<IEnumerable<Entities.MovieGenres>>> GetAll([FromQuery] int? movId, [FromQuery] int? genId)
         {
             var query = _context.MovieGenres
                 .Include(mg => mg.Movie)
@@ -40,9 +40,9 @@ namespace cs_oppgave_05.Api.MovieGenres
 
         // GET: /api/movie_genres/{movId}/{genId}
         [HttpGet("{movId:int}/{genId:int}", Name = "GetMovieGenreById")]
-        [ProducesResponseType(typeof(Models.MovieGenres), 200)]
+        [ProducesResponseType(typeof(Entities.MovieGenres), 200)]
         [ProducesResponseType(404)]
-        public async Task<ActionResult<Models.MovieGenres>> GetById(int movId, int genId)
+        public async Task<ActionResult<Entities.MovieGenres>> GetById(int movId, int genId)
         {
             var movieGenre = await _context.MovieGenres
                 .Include(mg => mg.Movie)

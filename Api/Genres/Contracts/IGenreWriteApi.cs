@@ -18,7 +18,7 @@ namespace cs_oppgave_05.Api.Genres.Contracts
         /// Content-Type: application/json
         /// { "genTitle": "Sci-Fi" }
         /// </remarks>
-        Task<ActionResult<Models.Genres>> Create([FromBody] CreateGenreDto dto);
+        Task<ActionResult<Entities.Genres>> Create([FromBody] CreateGenreDto dto);
 
         /// <summary>
         /// Partially updates a genre by ID; null properties are ignored.

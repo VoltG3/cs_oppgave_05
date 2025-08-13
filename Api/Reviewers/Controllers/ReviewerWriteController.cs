@@ -1,6 +1,6 @@
 using cs_oppgave_05.Api._Shared.Dtos;
 using Microsoft.AspNetCore.Mvc;
-using cs_oppgave_05.Models;
+using cs_oppgave_05.Entities;
 using cs_oppgave_05.Api.Reviewers.Contracts;
 using cs_oppgave_05.Api.Reviewers.Dtos;
 using cs_oppgave_05.Data;

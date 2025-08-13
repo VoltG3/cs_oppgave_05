@@ -18,8 +18,8 @@ namespace cs_oppgave_05.Api.Genres
 
         // GET: /api/genres
         [HttpGet]
-        [ProducesResponseType(typeof(IEnumerable<Models.Genres>), 200)]
-        public async Task<ActionResult<IEnumerable<Models.Genres>>> GetAll()
+        [ProducesResponseType(typeof(IEnumerable<Entities.Genres>), 200)]
+        public async Task<ActionResult<IEnumerable<Entities.Genres>>> GetAll()
         {
             var genres = await _context.Genres
                 .AsNoTracking()
@@ -29,9 +29,9 @@ namespace cs_oppgave_05.Api.Genres
 
         // GET: /api/genres/{id}
         [HttpGet("{id}", Name = "GetGenreById")]
-        [ProducesResponseType(typeof(Models.Genres), 200)]
+        [ProducesResponseType(typeof(Entities.Genres), 200)]
         [ProducesResponseType(404)]
-        public async Task<ActionResult<Models.Genres>> GetById(int id)
+        public async Task<ActionResult<Entities.Genres>> GetById(int id)
         {
             var genre = await _context.Genres.FindAsync(id);
             if (genre == null) return NotFound();

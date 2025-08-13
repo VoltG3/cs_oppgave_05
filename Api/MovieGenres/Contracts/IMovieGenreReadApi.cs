@@ -15,7 +15,7 @@ namespace cs_oppgave_05.Api.MovieGenres.Contracts
         /// GET /api/movie_genres
         /// GET /api/movie_genres?movId=10&genId=3
         /// </remarks>
-        Task<ActionResult<IEnumerable<Models.MovieGenres>>> GetAll(int? movId, int? genId);
+        Task<ActionResult<IEnumerable<Entities.MovieGenres>>> GetAll(int? movId, int? genId);
 
         /// <summary>
         /// Returns a single movie-genre link by composite key.
@@ -25,6 +25,6 @@ namespace cs_oppgave_05.Api.MovieGenres.Contracts
         /// GET /api/movie_genres/{movId}/{genId}
         /// Example: GET /api/movie_genres/10/3
         /// </remarks>
-        Task<ActionResult<Models.MovieGenres>> GetById(int movId, int genId);
+        Task<ActionResult<Entities.MovieGenres>> GetById(int movId, int genId);
     }
 }

@@ -17,7 +17,7 @@ namespace cs_oppgave_05.Api.MovieGenres.Contracts
         /// Content-Type: application/json
         /// { "movId": 10, "genId": 3 }
         /// </remarks>
-        Task<ActionResult<Models.MovieGenres>> Create([FromBody] CreateMovieGenresDto dto);
+        Task<ActionResult<Entities.MovieGenres>> Create([FromBody] CreateMovieGenresDto dto);
 
         /// <summary>
         /// Not supported: movie_genres is key-only link; keys cannot be changed.

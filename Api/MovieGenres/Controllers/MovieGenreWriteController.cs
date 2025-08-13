@@ -19,10 +19,10 @@ namespace cs_oppgave_05.Api.MovieGenres
 
         // POST: /api/movie_genres
         [HttpPost]
-        [ProducesResponseType(typeof(Models.MovieGenres), 201)]
+        [ProducesResponseType(typeof(Entities.MovieGenres), 201)]
         [ProducesResponseType(400)]
         [ProducesResponseType(409)]
-        public async Task<ActionResult<Models.MovieGenres>> Create([FromBody] CreateMovieGenresDto dto)
+        public async Task<ActionResult<Entities.MovieGenres>> Create([FromBody] CreateMovieGenresDto dto)
         {
             if (!ModelState.IsValid) return ValidationProblem(ModelState);
 
@@ -35,7 +35,7 @@ namespace cs_oppgave_05.Api.MovieGenres
             if (exists)
                 return Conflict("This genre is already linked to this movie.");
 
-            var movieGenre = new Models.MovieGenres { MovId = dto.MovId, GenId = dto.GenId };
+            var movieGenre = new Entities.MovieGenres { MovId = dto.MovId, GenId = dto.GenId };
 
             _context.MovieGenres.Add(movieGenre);
             await _context.SaveChangesAsync();

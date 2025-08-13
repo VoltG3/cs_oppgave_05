@@ -1,6 +1,6 @@
 using cs_oppgave_05.Api._Shared.Dtos;
 using Microsoft.AspNetCore.Mvc;
-using cs_oppgave_05.Models;
+using cs_oppgave_05.Entities;
 using cs_oppgave_05.Api.Directors.Dtos;
 
 namespace cs_oppgave_05.Api.Directors.Contracts
