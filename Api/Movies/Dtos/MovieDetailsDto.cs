@@ -1,4 +1,3 @@
-
 using cs_oppgave_05.Api.Movies.Dtos.Contracts;
 
 namespace cs_oppgave_05.Api.Movies.Dtos

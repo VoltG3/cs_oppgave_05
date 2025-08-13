@@ -1,8 +1,8 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc;
+using cs_oppgave_05.Infrastructure.Presistance;
 using cs_oppgave_05.Api.MovieGenres.Contracts;
 using cs_oppgave_05.Api.MovieGenres.Dtos;
-using cs_oppgave_05.Data;
 
 namespace cs_oppgave_05.Api.MovieGenres
 {

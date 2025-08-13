@@ -1,8 +1,7 @@
-﻿using System.Text.Json.Serialization;
+﻿using Microsoft.EntityFrameworkCore;
+using System.Text.Json.Serialization;
 using cs_oppgave_05.Tests.MYSQLConnection;
-using cs_oppgave_05.Migration.MYSQLMigration;
-using cs_oppgave_05.Data;
-using Microsoft.EntityFrameworkCore;
+using cs_oppgave_05.Infrastructure.Presistance;
 
 
 //      Task: RestAPI with Controllers (MVC)

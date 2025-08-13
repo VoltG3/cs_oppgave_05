@@ -2,7 +2,7 @@ using Microsoft.AspNetCore.Mvc;
 using cs_oppgave_05.Entities;
 using cs_oppgave_05.Api.Directors.Contracts;
 using cs_oppgave_05.Api.Directors.Dtos;
-using cs_oppgave_05.Data;
+using cs_oppgave_05.Infrastructure.Presistance;
 using cs_oppgave_05.Api._Shared.Dtos;
 
 namespace cs_oppgave_05.Api.Directors

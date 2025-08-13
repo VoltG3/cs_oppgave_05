@@ -14,7 +14,7 @@
       <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="8.0.3" />
       <PackageReference Include="Spectre.Console" Version="0.50.0" />
       <PackageReference Include="Spectre.Console.Cli" Version="0.50.0" />
-      <Content Include="SqlScripts\**\*.sql">
+      <Content Include="Infrastructure\Presistance\Migrations\SqlScripts\**\*.sql">
     	<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       </Content>
     </ItemGroup>

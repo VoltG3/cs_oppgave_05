@@ -1,8 +1,8 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc;
-using cs_oppgave_05.Entities;
+using cs_oppgave_05.Infrastructure.Presistance;
 using cs_oppgave_05.Api.MovieCasts.Contracts;
-using cs_oppgave_05.Data;
+using cs_oppgave_05.Entities;
 
 namespace cs_oppgave_05.Api.MovieCasts
 {

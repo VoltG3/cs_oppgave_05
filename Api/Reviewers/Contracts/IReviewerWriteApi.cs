@@ -1,7 +1,7 @@
-using cs_oppgave_05.Api.Reviewers.Dtos;
 using Microsoft.AspNetCore.Mvc;
-using cs_oppgave_05.Entities;
 using DeleteByIdDto = cs_oppgave_05.Api._Shared.Dtos.DeleteByIdDto;
+using cs_oppgave_05.Api.Reviewers.Dtos;
+using cs_oppgave_05.Entities;
 
 namespace cs_oppgave_05.Api.Reviewers.Contracts
 {

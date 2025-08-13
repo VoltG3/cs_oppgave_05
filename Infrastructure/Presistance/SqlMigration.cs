@@ -1,13 +1,13 @@
 using MySqlConnector;
 using Spectre.Console;
 
-namespace cs_oppgave_05.Migration.MYSQLMigration;
+namespace cs_oppgave_05.Infrastructure.Presistance;
 
 public static class SqlMigration
 {
     public static void Run(string connectionString)
     {
-        string scriptsDirectory = Path.Combine(Directory.GetCurrentDirectory(), "SqlScripts");
+        string scriptsDirectory = Path.Combine(Directory.GetCurrentDirectory(), "Infrastructure", "Presistance", "Migrations", "SqlScripts");
 
         if (!Directory.Exists(scriptsDirectory))
         {

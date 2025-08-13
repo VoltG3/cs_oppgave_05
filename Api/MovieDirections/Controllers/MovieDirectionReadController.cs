@@ -2,7 +2,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc;
 using cs_oppgave_05.Entities;
 using cs_oppgave_05.Api.MovieDirections.Contracts;
-using cs_oppgave_05.Data;
+using cs_oppgave_05.Infrastructure.Presistance;
 
 namespace cs_oppgave_05.Api.MovieDirections
 {

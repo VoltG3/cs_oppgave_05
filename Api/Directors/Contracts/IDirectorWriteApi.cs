@@ -1,7 +1,7 @@
-using cs_oppgave_05.Api._Shared.Dtos;
 using Microsoft.AspNetCore.Mvc;
-using cs_oppgave_05.Entities;
+using cs_oppgave_05.Api._Shared.Dtos;
 using cs_oppgave_05.Api.Directors.Dtos;
+using cs_oppgave_05.Entities;
 
 namespace cs_oppgave_05.Api.Directors.Contracts
 {

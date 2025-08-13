@@ -1,8 +1,8 @@
 using Microsoft.AspNetCore.Mvc;
-using cs_oppgave_05.Entities;
+using cs_oppgave_05.Infrastructure.Presistance;
 using cs_oppgave_05.Api.Movies.Contracts;
-using cs_oppgave_05.Data;
 using cs_oppgave_05.Api.Movies.Dtos;
+using cs_oppgave_05.Entities;
 
 using DeleteByIdDto = cs_oppgave_05.Api._Shared.Dtos.DeleteByIdDto;
 

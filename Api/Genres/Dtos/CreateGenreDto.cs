@@ -1,4 +1,3 @@
-
 using System.Text.Json.Serialization;
 using cs_oppgave_05.Api.Genres.Dtos.Contracts;
 
