@@ -6,7 +6,7 @@ public class GenresConfiguration : IEntityTypeConfiguration<Genres>
 {
     public void Configure(EntityTypeBuilder<Genres> b)
     {
-        b.ToTable("Genres");
+        b.ToTable("genres");
         b.HasKey(g => g.GenId);
 
         b.Property(g => g.GenTitle).IsRequired().HasMaxLength(100);

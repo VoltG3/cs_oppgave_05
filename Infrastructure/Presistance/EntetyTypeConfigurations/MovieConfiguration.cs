@@ -6,7 +6,7 @@ public class MovieConfiguration : IEntityTypeConfiguration<Movie>
 {
     public void Configure(EntityTypeBuilder<Movie> b)
     {
-        b.ToTable("Movies");
+        b.ToTable("movie");
 
         b.HasKey(m => m.MovId);
 

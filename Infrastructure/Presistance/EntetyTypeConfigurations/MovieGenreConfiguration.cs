@@ -6,7 +6,7 @@ public class MovieGenresConfiguration : IEntityTypeConfiguration<MovieGenres>
 {
     public void Configure(EntityTypeBuilder<MovieGenres> b)
     {
-        b.ToTable("MovieGenres");
+        b.ToTable("movie_genres");
         b.HasKey(mg => new { mg.MovId, mg.GenId });
 
         b.HasOne(mg => mg.Movie)

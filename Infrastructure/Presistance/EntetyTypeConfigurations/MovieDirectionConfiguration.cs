@@ -6,7 +6,7 @@ public class MovieDirectionConfiguration : IEntityTypeConfiguration<MovieDirecti
 {
     public void Configure(EntityTypeBuilder<MovieDirection> b)
     {
-        b.ToTable("MovieDirections");
+        b.ToTable("movie_direction");
         b.HasKey(md => new { md.DirId, md.MovId });
 
         b.HasOne(md => md.Director)

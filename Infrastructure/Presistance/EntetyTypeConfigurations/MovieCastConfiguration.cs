@@ -6,7 +6,7 @@ public class MovieCastConfiguration : IEntityTypeConfiguration<MovieCast>
 {
     public void Configure(EntityTypeBuilder<MovieCast> b)
     {
-        b.ToTable("MovieCasts");
+        b.ToTable("movie_cast");
         b.HasKey(mc => new { mc.ActId, mc.MovId });
 
         b.Property(mc => mc.Role).HasMaxLength(150);

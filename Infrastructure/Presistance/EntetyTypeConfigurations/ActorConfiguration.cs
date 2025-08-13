@@ -6,7 +6,7 @@ public class ActorConfiguration : IEntityTypeConfiguration<Actor>
 {
     public void Configure(EntityTypeBuilder<Actor> b)
     {
-        b.ToTable("Actors");
+        b.ToTable("actor");
         b.HasKey(a => a.ActId);
 
         b.Property(a => a.ActFname).IsRequired().HasMaxLength(100);

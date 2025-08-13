@@ -6,7 +6,7 @@ public class RatingConfiguration : IEntityTypeConfiguration<Rating>
 {
     public void Configure(EntityTypeBuilder<Rating> b)
     {
-        b.ToTable("Ratings");
+        b.ToTable("rating");
         b.HasKey(r => new { r.MovId, r.RevId });
         
         b.Property(r => r.RevStars)

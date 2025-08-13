@@ -6,7 +6,7 @@ public class DirectorConfiguration : IEntityTypeConfiguration<Director>
 {
     public void Configure(EntityTypeBuilder<Director> b)
     {
-        b.ToTable("Directors");
+        b.ToTable("director");
         b.HasKey(d => d.DirId);
 
         b.Property(d => d.DirFname).IsRequired().HasMaxLength(100);

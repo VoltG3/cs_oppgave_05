@@ -6,7 +6,7 @@ public class ReviewerConfiguration : IEntityTypeConfiguration<Reviewer>
 {
     public void Configure(EntityTypeBuilder<Reviewer> b)
     {
-        b.ToTable("Reviewers");
+        b.ToTable("reviewer");
         b.HasKey(r => r.RevId);
 
         b.Property(r => r.RevName)
