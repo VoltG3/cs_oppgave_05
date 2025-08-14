@@ -5,10 +5,10 @@ using cs_oppgave_05.Api.Movies.Contracts;
 using cs_oppgave_05.Api.Movies.Dtos;
 using cs_oppgave_05.Entities;
 
-namespace cs_oppgave_05.Api.Movies
+namespace cs_oppgave_05.Api.Movies.Controllers
 {
     [ApiController]
-    [Route("api/movies")]
+    [Route("api/Movies")]
     public class MoviesReadController : ControllerBase, IMovieReadApi
     {
         private readonly AppDbContext _context;

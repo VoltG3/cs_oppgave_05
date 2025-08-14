@@ -3,10 +3,10 @@ using Microsoft.AspNetCore.Mvc;
 using cs_oppgave_05.Infrastructure.Presistance;
 using cs_oppgave_05.Api.MovieGenres.Contracts;
 
-namespace cs_oppgave_05.Api.MovieGenres
+namespace cs_oppgave_05.Api.MovieGenres.Controllers
 {
     [ApiController]
-    [Route("api/movie_genres")]
+    [Route("api/MovieGenres")]
     public class MovieGenresReadController : ControllerBase, IMovieGenresReadApi
     {
         private readonly AppDbContext _context;

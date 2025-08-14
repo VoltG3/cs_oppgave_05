@@ -4,10 +4,10 @@ using cs_oppgave_05.Api.Genres.Contracts;
 using cs_oppgave_05.Api._Shared.Dtos;
 using cs_oppgave_05.Api.Genres.Dtos;
 
-namespace cs_oppgave_05.Api.Genres
+namespace cs_oppgave_05.Api.Genres.Controllers
 {
     [ApiController]
-    [Route("api/genres")]
+    [Route("api/Genres")]
     public class GenreWriteController : ControllerBase, IGenreWriteApi
     {
         private readonly AppDbContext _context;

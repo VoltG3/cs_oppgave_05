@@ -5,10 +5,10 @@ using cs_oppgave_05.Api._Shared.Dtos;
 using cs_oppgave_05.Api.Reviewers.Dtos;
 using cs_oppgave_05.Entities;
 
-namespace cs_oppgave_05.Api.Reviewers
+namespace cs_oppgave_05.Api.Reviewers.Controllers
 {
     [ApiController]
-    [Route("api/reviewers")]
+    [Route("api/Reviewers")]
     public class ReviewersWriteController : ControllerBase, IReviewerWriteApi
     {
         private readonly AppDbContext _context;

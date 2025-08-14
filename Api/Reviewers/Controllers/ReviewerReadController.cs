@@ -4,10 +4,10 @@ using cs_oppgave_05.Infrastructure.Presistance;
 using cs_oppgave_05.Api.Reviewers.Contracts;
 using cs_oppgave_05.Entities;
 
-namespace cs_oppgave_05.Api.Reviewers
+namespace cs_oppgave_05.Api.Reviewers.Controllers
 {
     [ApiController]
-    [Route("api/reviewers")]
+    [Route("api/Reviewers")]
     public class ReviewersReadController : ControllerBase, IReviewerReadApi
     {
         private readonly AppDbContext _context;

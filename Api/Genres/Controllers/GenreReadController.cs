@@ -3,10 +3,10 @@ using Microsoft.AspNetCore.Mvc;
 using cs_oppgave_05.Infrastructure.Presistance;
 using cs_oppgave_05.Api.Genres.Contracts;
 
-namespace cs_oppgave_05.Api.Genres
+namespace cs_oppgave_05.Api.Genres.Controllers
 {
     [ApiController]
-    [Route("api/genres")]
+    [Route("api/Genres")]
     public class GenresReadController : ControllerBase, IGenreReadApi
     {
         private readonly AppDbContext _context;

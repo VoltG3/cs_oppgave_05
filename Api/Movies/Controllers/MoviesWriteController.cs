@@ -6,10 +6,10 @@ using cs_oppgave_05.Entities;
 
 using DeleteByIdDto = cs_oppgave_05.Api._Shared.Dtos.DeleteByIdDto;
 
-namespace cs_oppgave_05.Api.Movies
+namespace cs_oppgave_05.Api.Movies.Controllers
 {
     [ApiController]
-    [Route("api/movies")]
+    [Route("api/Movies")]
     public class MoviesWriteController : ControllerBase, IMovieWriteApi
     {
         private readonly AppDbContext _context;

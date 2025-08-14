@@ -4,10 +4,10 @@ using cs_oppgave_05.Infrastructure.Presistance;
 using cs_oppgave_05.Api.MovieGenres.Contracts;
 using cs_oppgave_05.Api.MovieGenres.Dtos;
 
-namespace cs_oppgave_05.Api.MovieGenres
+namespace cs_oppgave_05.Api.MovieGenres.Controllers
 {
     [ApiController]
-    [Route("api/movie_genres")]
+    [Route("api/MovieGenres")]
     public class MovieGenresWriteController : ControllerBase, IMovieGenresWriteApi
     {
         private readonly AppDbContext _context;

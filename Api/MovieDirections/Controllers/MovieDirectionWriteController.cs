@@ -6,10 +6,10 @@ using cs_oppgave_05.Api.MovieDirections.Dtos;
 using cs_oppgave_05.Api.MovieDirections.Dtos.Contracts;
 using cs_oppgave_05.Infrastructure.Presistance;
 
-namespace cs_oppgave_05.Api.MovieDirections
+namespace cs_oppgave_05.Api.MovieDirections.Controllers
 {
     [ApiController]
-    [Route("api/movie_directions")]
+    [Route("api/MovieDirection")]
     public class MovieDirectionsWriteController : ControllerBase, IMovieDirectionWriteApi
     {
         private readonly AppDbContext _context;

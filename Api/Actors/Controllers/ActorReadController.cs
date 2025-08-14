@@ -4,10 +4,10 @@ using cs_oppgave_05.Infrastructure.Presistance;
 using cs_oppgave_05.Api.Actors.Contracts;
 using cs_oppgave_05.Entities;
 
-namespace cs_oppgave_05.Api.Actors
+namespace cs_oppgave_05.Api.Actors.Controllers
 {
     [ApiController]
-    [Route("api/actors")]
+    [Route("api/Actors")]
     public class ActorReadController : ControllerBase, IActorReadApi
     {
         private readonly AppDbContext _context;

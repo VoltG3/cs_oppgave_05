@@ -4,10 +4,10 @@ using cs_oppgave_05.Infrastructure.Presistance;
 using cs_oppgave_05.Api.Directors.Contracts;
 using cs_oppgave_05.Entities;
 
-namespace cs_oppgave_05.Api.Directors
+namespace cs_oppgave_05.Api.Directors.Controllers
 {
     [ApiController]
-    [Route("api/directors")]
+    [Route("api/Directors")]
     public class DirectorsReadController : ControllerBase, IDirectorReadApi
     {
         private readonly AppDbContext _context;

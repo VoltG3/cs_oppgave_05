@@ -4,10 +4,10 @@ using cs_oppgave_05.Infrastructure.Presistance;
 using cs_oppgave_05.Api.MovieCasts.Contracts;
 using cs_oppgave_05.Entities;
 
-namespace cs_oppgave_05.Api.MovieCasts
+namespace cs_oppgave_05.Api.MovieCasts.Controllers
 {
     [ApiController]
-    [Route("api/movie_casts")]
+    [Route("api/MovieCasts")]
     public class MovieCastsReadController : ControllerBase, IMovieCastReadApi
     {
         private readonly AppDbContext _context;

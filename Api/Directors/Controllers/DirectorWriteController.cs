@@ -5,10 +5,10 @@ using cs_oppgave_05.Api.Directors.Dtos;
 using cs_oppgave_05.Infrastructure.Presistance;
 using cs_oppgave_05.Api._Shared.Dtos;
 
-namespace cs_oppgave_05.Api.Directors
+namespace cs_oppgave_05.Api.Directors.Controllers
 {
     [ApiController]
-    [Route("api/directors")]
+    [Route("api/Directors")]
     public class DirectorsWriteController : ControllerBase, IDirectorWriteApi
     {
         private readonly AppDbContext _context;

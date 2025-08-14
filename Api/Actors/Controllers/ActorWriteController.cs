@@ -5,10 +5,10 @@ using cs_oppgave_05.Api.Actors.Contracts;
 using cs_oppgave_05.Infrastructure.Presistance;
 using cs_oppgave_05.Api.Actors.Dtos;
 
-namespace cs_oppgave_05.Api.Actors
+namespace cs_oppgave_05.Api.Actors.Controllers
 {
     [ApiController]
-    [Route("api/actors")]
+    [Route("api/Actors")]
     public class ActorsWriteController : ControllerBase, IActorWriteApi
     {
         private readonly AppDbContext _context;

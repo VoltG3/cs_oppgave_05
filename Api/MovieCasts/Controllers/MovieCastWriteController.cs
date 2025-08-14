@@ -5,10 +5,10 @@ using cs_oppgave_05.Api.MovieCasts.Contracts;
 using cs_oppgave_05.Infrastructure.Presistance;
 using cs_oppgave_05.Api.MovieCasts.Dtos;
 
-namespace cs_oppgave_05.Api.MovieCasts
+namespace cs_oppgave_05.Api.MovieCasts.Controllers
 {
     [ApiController]
-    [Route("api/movie_casts")]
+    [Route("api/MovieCasts")]
     public class MovieCastsWriteController : ControllerBase, IMovieCastWriteApi
     {
         private readonly AppDbContext _context;

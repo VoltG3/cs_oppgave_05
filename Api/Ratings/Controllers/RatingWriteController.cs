@@ -5,10 +5,10 @@ using cs_oppgave_05.Api.Ratings.Contracts;
 using cs_oppgave_05.Api.Ratings.Dtos;
 using cs_oppgave_05.Entities;
 
-namespace cs_oppgave_05.Api.Ratings
+namespace cs_oppgave_05.Api.Ratings.Controllers
 {
     [ApiController]
-    [Route("api/ratings")]
+    [Route("api/Ratings")]
     public class RatingsWriteController : ControllerBase, IRatingWriteApi
     {
         private readonly AppDbContext _context;
