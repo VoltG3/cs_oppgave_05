@@ -25,8 +25,26 @@ namespace cs_oppgave_05.Infrastructure.Presistance.EntetyTypeConfigurations
 
             b.Property(m => m.MovRelCountry)
                 .HasMaxLength(64);
-
+            
             b.HasIndex(m => new { m.MovTitle, m.MovYear });
+            
+            // Relations
+            b.HasMany(m => m.MovieGenres)
+                .WithOne(mg => mg.Movie)
+                .HasForeignKey(mg => mg.MovId);
+
+            b.HasMany(m => m.MovieDirections)
+                .WithOne(md => md.Movie)
+                .HasForeignKey(md => md.MovId);
+
+            b.HasMany(m => m.MovieCasts)
+                .WithOne(mc => mc.Movie)
+                .HasForeignKey(mc => mc.MovId);
+
+            b.HasMany(m => m.Ratings)
+                .WithOne(r => r.Movie)
+                .HasForeignKey(r => r.MovId);
+            
         }
     }
 }
