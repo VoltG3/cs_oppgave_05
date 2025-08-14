@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System.Text.Json.Serialization;
-using cs_oppgave_05.Tests.MYSQLConnection;
+using cs_oppgave_05.Infrastructure.Diagnostics;
+
 using cs_oppgave_05.Infrastructure.Presistance;
 using Microsoft.AspNetCore.StaticFiles;
 using Microsoft.Extensions.FileProviders;
@@ -16,7 +17,7 @@ class Program
                                ?? throw new InvalidOperationException("Connection string 'Default' not found.");
 
         // Test SQL Connection
-        MysqlConnectionTester.TestConnection(connectionString);
+        MysqlConnectionTester.AssertCanOpen(connectionString);
         
         // SQL Migration
         SqlMigration.RunFromBuilder(builder, connName: "Default",
