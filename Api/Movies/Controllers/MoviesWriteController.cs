@@ -27,14 +27,15 @@ namespace cs_oppgave_05.Api.Movies.Controllers
         {
             if (!ModelState.IsValid) return ValidationProblem(ModelState);
 
+            // Create entity
             var movie = new Movie
             {
                 MovTitle = dto.MovTitle,
-                MovYear = dto.MovYear,
-                MovTime = dto.MovTime,
-                MovLang = dto.MovLang,
-                MovDtRel = dto.MovDtRel,
-                MovRelCountry = dto.MovRelCountry
+                MovYear = dto.MovYear ?? 0,
+                MovTime = dto.MovTime ?? 0,
+                MovLang = dto.MovLang ?? String.Empty,
+                MovDtRel = dto.MovDtRel ?? default,
+                MovRelCountry = dto.MovRelCountry ?? String.Empty,
             };
 
             _context.Movies.Add(movie);

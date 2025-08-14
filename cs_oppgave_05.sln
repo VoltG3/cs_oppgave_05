@@ -1,9 +1,12 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# 
+#
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "cs_oppgave_05", "cs_oppgave_05.csproj", "{22202C5D-058A-44CE-B7F0-AED7E970108E}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{4E6A6F09-AD37-469A-9A6A-E987D3D9B312}"
+	ProjectSection(SolutionItems) = preProject
+		tests\RunSettings.runsettings = tests\RunSettings.runsettings
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "cs_oppgave_05.UnitTests", "tests\cs_oppgave_05.UnitTests\cs_oppgave_05.UnitTests.csproj", "{4DA63A82-953C-4AFC-A957-6E04D8FF6B7F}"
 EndProject

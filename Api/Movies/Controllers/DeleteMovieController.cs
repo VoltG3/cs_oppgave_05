@@ -2,6 +2,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc;
 using cs_oppgave_05.Infrastructure.Presistance;
 using cs_oppgave_05.Api.Movies.Contracts;
+using cs_oppgave_05.Entities;
 
 namespace cs_oppgave_05.Api.Movies.Controllers
 {
@@ -51,10 +52,15 @@ namespace cs_oppgave_05.Api.Movies.Controllers
                 if (movie == null) return NotFound();
 
                 // Delete related records
-                _context.MovieGenres.RemoveRange(movie.MovieGenres);
-                _context.MovieDirections.RemoveRange(movie.MovieDirections);
-                _context.MovieCasts.RemoveRange(movie.MovieCasts);
-                _context.Ratings.RemoveRange(movie.Ratings);
+                // Delete related records (droši pret null)
+                _context.MovieGenres.RemoveRange(movie.MovieGenres ?? Enumerable.Empty<Entities.MovieGenres>());
+                _context.MovieDirections.RemoveRange(movie.MovieDirections ?? Enumerable.Empty<MovieDirection>());
+                _context.MovieCasts.RemoveRange(movie.MovieCasts ?? Enumerable.Empty<MovieCast>());
+                _context.Ratings.RemoveRange(movie.Ratings ?? Enumerable.Empty<Rating>());
+
+                // Finally delete the movie
+                _context.Movies.Remove(movie);
+
 
                 // Finally delete the movie
                 _context.Movies.Remove(movie);

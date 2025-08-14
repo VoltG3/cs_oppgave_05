@@ -8,7 +8,7 @@ using Microsoft.Extensions.FileProviders;
 
 namespace cs_oppgave_05;
 
-class Program
+public partial class Program
 {
     static void Main(string[] args)
     {
