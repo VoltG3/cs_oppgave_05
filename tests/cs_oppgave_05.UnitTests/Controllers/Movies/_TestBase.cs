@@ -53,7 +53,7 @@ public abstract class MoviesTestBase
         db.SaveChanges();
 
         db.MovieGenres.Add(new Entities.MovieGenres   { MovId = m.MovId, GenId = g.GenId });
-        db.MovieDirections.Add(new MovieDirection { MovId = m.MovId, DirId = d.DirId });
+        db.MovieDirections.Add(new Entities.MovieDirection { MovId = m.MovId, DirId = d.DirId });
         db.MovieCasts.Add(new MovieCast      { MovId = m.MovId, ActId = a.ActId, Role = "Role" });
         db.Ratings.Add(new Rating            { MovId = m.MovId, RevId = r.RevId, RevStars = 5, NumOfRatings = 1 });
         db.SaveChanges();
