@@ -27,8 +27,4 @@
     <ProjectReference Include="..\..\cs_oppgave_05.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Controllers\" />
-  </ItemGroup>
-
 </Project>
