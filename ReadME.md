@@ -1,4 +1,6 @@
-#### CS_OPPGAVE_05 / C# / CRUD / MYSQL / API
+#### [ C# Intermediate Oppgave 4 ] and [ SQL Oppgave 4 ]
+
+/ C# / FC CORE / CRUD / MYSQL / API / WEB SERVER / CURL TESTS / XUNIT TEST
 
 | Tags         | Chaper                                                           |
 |:-------------|:-----------------------------------------------------------------|
@@ -12,12 +14,9 @@
 | img          | [Relation Diagram](#relation-diagram)                            |
 |              | [Curl Tests - Relations](#curl-tests-relations)                  |
 |              | [Curl Tests - Options](#curl-tests-options) |                                           
-
+Best for test anyway - Linux / Docker / DBeaver
 
 #### Dependencies
-- Linux
-- Docker
-- DBeaver
 
 ```sh
 dotnet add package MySql.Data
