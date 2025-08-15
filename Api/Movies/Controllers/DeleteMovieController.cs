@@ -4,7 +4,6 @@ using cs_oppgave_05.Infrastructure.Presistance;
 using cs_oppgave_05.Api.Movies.Contracts;
 using cs_oppgave_05.Entities;
 
-
 namespace cs_oppgave_05.Api.Movies.Controllers
 {
     [ApiController]

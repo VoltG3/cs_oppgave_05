@@ -84,7 +84,6 @@ public partial class Program
                 <link rel="icon" href="/favicon.ico">
               </head>
               <body>
-              
                 <h1>API Movie</h1>
                 <p>Try <a href="/api/Movies">Movies</a></p>
                 <p>Try <a href="/api/Directors">Directors</a></p>
@@ -95,7 +94,6 @@ public partial class Program
                 <p>Try <a href="/api/MovieGenres">/api/MovieGenres</a></p>
                 <p>Try <a href="/api/Reviewers">/api/Reviewers</a></p>
                 <p>Try <a href="/api/Ratings?movId=925&revId=9021">/api/Ratings</a></p>
-                
               </body>
             </html>
             """,
