@@ -9,4 +9,5 @@ public static class MysqlConnectionTester
         using var conn = new MySqlConnection(connectionString);
         conn.Open();
     }
+    
 }
