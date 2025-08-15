@@ -1,41 +1,45 @@
 ### `C# Intermediate Oppgave 4` and `SQL Oppgave 4`
 ###### C# / FC CORE / NET 8/ CRUD / MYSQL / SQL MIGRATION / API / WEB SERVER / RestAPI / CURL TESTS / XUNIT TEST
 
-| Chaper                                                           |
-|:-----------------------------------------------------------------|
-| [SQL Migration](#sql-migration)                                  |
-| [Docker MYSQL container](#docker-mysql-container)                |
-| [C# Register path for sql script](#register-path-for-sql-script) |
-| [DBeaver](#dbeaver)                                              |
-| [ oppgave05_V2Simple Web Server](#simple-webserver)              |
-| [oppgave05_V3 CRUD](#crud)                                       |
-| [Issues](#issues)                                                |
-| [Relation Diagram](#relation-diagram)                            |
-| [Curl Tests - Relations](#curl-tests-relations)                  |
-| [Curl Tests - Options](#curl-tests-options)                      |                                           
-Best for test anyway - Linux / Docker / DBeaver
-
 ###### Check OnLive condition
 ```sh
 http://localhost:5000   
+
 curl http://localhost:5000 
 ```
 ###### Execute 'curl_tests_script_relations.sh'
 
 ```sh
 chmod +x curl_tests_script_relations.sh
+
 sh ./curl_tests_script_relations.sh
 ```
 
 ###### Then check new Record
 ```sh
 http://localhost:5000/api/Movies/929/details
+
 curl -X GET "http://localhost:5000/api/Movies/929/details" -H "Accept: application/json"
 ````
 
 ###### Run xUnit tests
 ```sh
 dtest
+```
+
+### SQL Migration
+![img](https://github.com/VoltG3/cs_oppgave_05/blob/master/03.png)
+
+### xUnit test
+![img](https://github.com/VoltG3/cs_oppgave_05/blob/master/02.png)
+
+#### Relations Diagram
+![img](https://github.com/VoltG3/cs_oppgave_05/blob/master/01.png)
+
+#### If EF Core version crash
+```sh
+dotnet remove package Microsoft.EntityFrameworkCore
+dotnet add package Microsoft.EntityFrameworkCore --version 8.0.13
 ```
 
 ### Dependencies
@@ -101,15 +105,13 @@ docker create
  mysql:8.0
 ```
 
-### DBeaver, if credentials are singular:
+### DBeaver, if access issue
 ```sh
 if classic error: Public Key Retrieval is not allowed
 
 ALTER USER 'all'@'%' IDENTIFIED WITH mysql_native_password BY 'mysql';
 FLUSH PRIVILEGES;
 ```
-
-![img](https://github.com/VoltG3/cs_oppgave_05/blob/master/03.png)
 
 ### project encyclopedia `cs_oppgave_05.csproj`
 ```sh
@@ -185,17 +187,6 @@ FLUSH PRIVILEGES;
 
 </Project>
 ```
-
-![img](https://github.com/VoltG3/cs_oppgave_05/blob/master/02.png)
-
-#### If EF Core version crash
-```sh
-dotnet remove package Microsoft.EntityFrameworkCore
-dotnet add package Microsoft.EntityFrameworkCore --version 8.0.13
-```
-
-#### Relation Diagram
-![img](https://github.com/VoltG3/cs_oppgave_05/blob/master/01.png)
 
 #### CURL TEST 1 - MASTER TABLE - MOVIE
 
