@@ -70,8 +70,7 @@ dotnet test
 
 ## SQL Migration
 ___
-![img](https://github.com/VoltG3/cs_oppgave_05/blob/master/03.png)
-![img](https://github.com/VoltG3/cs_oppgave_05/blob/master/04.png)
+
 ### Init Docker MYSQL container
 ```sh
 docker create
@@ -97,6 +96,8 @@ if classic error: Public Key Retrieval is not allowed
 ALTER USER 'all'@'%' IDENTIFIED WITH mysql_native_password BY 'mysql';
 FLUSH PRIVILEGES;
 ```
+
+![img](https://github.com/VoltG3/cs_oppgave_05/blob/master/04.png)
 
 ### project encyclopedia `cs_oppgave_05.csproj`
 ```sh
