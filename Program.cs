@@ -84,7 +84,7 @@ public partial class Program
                 <link rel="icon" href="/favicon.ico">
               </head>
               <body>
-                <h1>API Movie</h1>
+                <h1>Web server OK</h1>
                 <p>Try <a href="/api/Movies">Movies</a></p>
                 <p>Try <a href="/api/Directors">Directors</a></p>
                 <p>Try <a href="/api/MovieDirection">/api/MovieDirection</a></p>

@@ -1,42 +1,78 @@
-#### [ C# Intermediate Oppgave 4 ] and [ SQL Oppgave 4 ]
+### `C# Intermediate Oppgave 4` and `SQL Oppgave 4`
+###### C# / FC CORE 8/ CRUD / MYSQL / API / WEB SERVER / CURL TESTS / XUNIT TEST
 
-/ C# / FC CORE / CRUD / MYSQL / API / WEB SERVER / CURL TESTS / XUNIT TEST
-
-| Tags         | Chaper                                                           |
-|:-------------|:-----------------------------------------------------------------|
-| oppgave05_V1 | [SQL Migration](#sql-migration)                                  |
-|              | [Docker MYSQL container](#docker-mysql-container)                |
-|              | [C# Register path for sql script](#register-path-for-sql-script) |
-|              | [DBeaver](#dbeaver)                                              |
-| oppgave05_V2 | [Simple Web Server](#simple-webserver)                           |
-| oppgave05_V3 | [CRUD](#crud)                                                    |
-|              | [Issues](#issues)                                                |
-| img          | [Relation Diagram](#relation-diagram)                            |
-|              | [Curl Tests - Relations](#curl-tests-relations)                  |
-|              | [Curl Tests - Options](#curl-tests-options) |                                           
+| Chaper                                                           |
+|:-----------------------------------------------------------------|
+| [SQL Migration](#sql-migration)                                  |
+| [Docker MYSQL container](#docker-mysql-container)                |
+| [C# Register path for sql script](#register-path-for-sql-script) |
+| [DBeaver](#dbeaver)                                              |
+| [ oppgave05_V2Simple Web Server](#simple-webserver)              |
+| [oppgave05_V3 CRUD](#crud)                                       |
+| [Issues](#issues)                                                |
+| [Relation Diagram](#relation-diagram)                            |
+| [Curl Tests - Relations](#curl-tests-relations)                  |
+| [Curl Tests - Options](#curl-tests-options)                      |                                           
 Best for test anyway - Linux / Docker / DBeaver
 
-#### Dependencies
+### Dependencies
 
 ```sh
 dotnet add package MySql.Data
 dotnet add package Spectre.Console
 dotnet add package Spectre.Console.Cli
-
+dotnet add package Pomelo.EntityFrameworkCore.MySql
+dotnet add package Microsoft.EntityFrameworkCore
+dotnet add package MySqlConnector
 dotnet add package Pomelo.EntityFrameworkCore.MySql
 dotnet add package Microsoft.EntityFrameworkCore
 dotnet add package MySqlConnector
 ```
 
+### Dependencies xunit test
+```sh
+# simple touch
+dotnet new xunit -f net8.0 -n cs_oppgave_05.UnitTests -o tests/cs_oppgave_05.UnitTests
+dotnet add tests/cs_oppgave_05.UnitTests package Microsoft.NET.Test.Sdk
+dotnet add tests/cs_oppgave_05.UnitTests reference cs_oppgave_05.csproj
+dotnet test
+
+# update sln
+dotnet sln add tests/cs_oppgave_05.UnitTests/cs_oppgave_05.UnitTests.csproj
+
+# test it 
+dotnet sln list
+
+# forward
+dotnet add tests/cs_oppgave_05.UnitTests package Microsoft.EntityFrameworkCore.Sqlite --version 8.0.13
+dotnet add tests/cs_oppgave_05.UnitTests package Microsoft.Data.Sqlite --version 8.0.13
+dotnet add tests/cs_oppgave_05.UnitTests package Microsoft.EntityFrameworkCore --version 8.0.13
+dotnet add tests/cs_oppgave_05.UnitTests package Microsoft.EntityFrameworkCore.Relational --version 8.0.13
+dotnet add tests/cs_oppgave_05.UnitTests package Microsoft.EntityFrameworkCore.InMemory --version 8.0.13
+dotnet add tests/cs_oppgave_05.UnitTests package Microsoft.EntityFrameworkCore.Sqlite --version 8.0.13
+dotnet add tests/cs_oppgave_05.UnitTests package Microsoft.Data.Sqlite --version 8.0.13
+
+# better output
+echo 'alias dtest="dotnet test --settings tests/RunSettings.runsettings"' >> ~/.bashrc
+source ~/.bashrc
+
+# then run
+dtest
+
+# refresh it
+dotnet clean
+dotnet restore
+dotnet build
+dotnet test
+````
+
+![img](https://github.com/VoltG3/cs_oppgave_05/blob/master/02.png)
+
 ## SQL Migration
 ___
-#### Dependencies
-```sh
-dotnet add package MySql.Data
-dotnet add package Spectre.Console
-dotnet add package Spectre.Console.Cli
-```
-#### Docker MYSQL container
+![img](https://github.com/VoltG3/cs_oppgave_05/blob/master/03.png)
+![img](https://github.com/VoltG3/cs_oppgave_05/blob/master/04.png)
+### Init Docker MYSQL container
 ```sh
 docker create
  --name mysql_movies
@@ -47,117 +83,97 @@ docker create
  -p 3309:3306
  mysql:8.0
 ```
-#### Reminder: Basic Docker Commands
+
+### Check OnLive condition
 ```sh
-docker images
-docker ps
-docker ps -a 
-sudo lsof -i :3306 
-docker start oppgave_05 
-docker stop oppgave_05
-docker logs oppgave_05
-docker exec -it mysql_movies mysql -u root -p
+http://localhost:5000   
+curl http://localhost:5000 
 ```
 
-#### Reminder: Basic SQL Commands
-```sql
-SHOW DATABASES;
-USE movies;
-SHOW TABLES;
-DESCRIBE <tablename>;
-```
-
-#### Register path for sql script
+### DBeaver, if credentials are singular:
 ```sh
-cs_oppgave_05.csproj
-
-<ItemGroup>
-  <Content Include="SqlScripts\**\*.sql">
-    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-  </Content>
-</ItemGroup>
-```
-
-#### DBeaver
-```sh
-if error: Public Key Retrieval is not allowed
+if classic error: Public Key Retrieval is not allowed
 
 ALTER USER 'all'@'%' IDENTIFIED WITH mysql_native_password BY 'mysql';
 FLUSH PRIVILEGES;
 ```
 
-## Simple Webserver
-___
-#### Add `server.csproj`
+### project encyclopedia `cs_oppgave_05.csproj`
 ```sh
 <Project Sdk="Microsoft.NET.Sdk.Web">
 
-  <PropertyGroup>
-    <TargetFramework>net9.0</TargetFramework>
-    <Nullable>enable</Nullable>
-    <ImplicitUsings>enable</ImplicitUsings>
-  </PropertyGroup>
+    <PropertyGroup>
+        <OutputType>Exe</OutputType>
+        <TargetFramework>net8.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.13" />
+      <PackageReference Include="MySql.Data" Version="9.4.0" />
+      <PackageReference Include="MySqlConnector" Version="2.4.0" />
+      <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="8.0.3" />
+      <PackageReference Include="Spectre.Console" Version="0.50.0" />
+      <PackageReference Include="Spectre.Console.Cli" Version="0.50.0" />
+      <Content Include="Infrastructure\Presistance\Migrations\SqlScripts\**\*.sql">
+    	<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </Content>
+      <Content Include="Assets/**">
+    	<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </Content>
+      <Compile Remove="tests/**" />
+      <None Remove="tests/**" />
+      <Content Remove="tests/**" />
+      <EmbeddedResource Remove="tests/**" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="Domain\" />
+    </ItemGroup>
 
 </Project>
 ```
 
-#### Edit `cs_oppgave_05.csproj`
+### xunit test encyclopedia `cs_oppgave_05.UnitTests.csproj`
 ```sh
-replace
+<Project Sdk="Microsoft.NET.Sdk">
 
-          <Project Sdk="Microsoft.NET.Sdk">
-          <TargetFramework>net7.0</TargetFramework>
-          
-with
-
-          <Project Sdk="Microsoft.NET.Sdk.Web">
-          <TargetFramework>net9.0</TargetFramework> 
-          
-```
-
-#### Check Connection
-```sh
-web:
-
-      http://localhost:5000
-      
-termnall:
-
-      curl http://localhost:5000 
-      
-```
-
-## CRUD
-___
-
-#### Dependencies
-```sh
-dotnet add package Pomelo.EntityFrameworkCore.MySql
-dotnet add package Microsoft.EntityFrameworkCore
-dotnet add package MySqlConnector
-```
-
-#### Issues
-
-Remove `server.csproj`, then rewrite `cs_oppgave_05.proj`
-```sh
-<Project Sdk="Microsoft.NET.Sdk.Web">
   <PropertyGroup>
-    <OutputType>Exe</OutputType>
-    <TargetFramework>net9.0</TargetFramework>
-    <Nullable>enable</Nullable>
+    <TargetFramework>net8.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+
+    <IsPackable>false</IsPackable>
+    <IsTestProject>true</IsTestProject>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.5" />
-    <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="8.0.3" />
-    <PackageReference Include="MySql.Data" Version="9.4.0" />
-    <PackageReference Include="Spectre.Console" Version="0.50.0" />
-    <PackageReference Include="Spectre.Console.Cli" Version="0.50.0" />
+    <PackageReference Include="Microsoft.Data.Sqlite" Version="8.0.13" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.13" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="8.0.13" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="8.0.13" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="8.0.13" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.14.1" />
+    <PackageReference Include="xunit" Version="2.4.2" />
+    <PackageReference Include="xunit.runner.visualstudio" Version="2.4.5">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+    <PackageReference Include="coverlet.collector" Version="6.0.0">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
   </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\cs_oppgave_05.csproj" />
+  </ItemGroup>
+
 </Project>
 ```
+## CRUD
+___
 
 #### If EF Core version crash
 ```sh
