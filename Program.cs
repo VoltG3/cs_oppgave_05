@@ -8,6 +8,11 @@ using Microsoft.Extensions.FileProviders;
 
 namespace cs_oppgave_05;
 
+// ToDo
+//
+// GetAll issue : curl -i http://localhost:5000/api/Reviewers
+// GetAll issue : curl -i http://localhost:5000/api/Ratings
+
 public partial class Program
 {
     static void Main(string[] args)
@@ -85,15 +90,15 @@ public partial class Program
               </head>
               <body>
                 <h1>Web server OK</h1>
-                <p>Try <a href="/api/Movies">Movies</a></p>
-                <p>Try <a href="/api/Directors">Directors</a></p>
-                <p>Try <a href="/api/MovieDirection">/api/MovieDirection</a></p>
-                <p>Try <a href="/api/Actors">/api/Actors</a></p>
-                <p>Try <a href="/api/MovieCasts">/api/MovieCasts</a></p>
-                <p>Try <a href="/api/Genres">/api/Genres</a></p>
-                <p>Try <a href="/api/MovieGenres">/api/MovieGenres</a></p>
-                <p>Try <a href="/api/Reviewers">/api/Reviewers</a></p>
-                <p>Try <a href="/api/Ratings">/api/Ratings</a></p>
+                <p>GetAll <a href="/api/Movies">Movies</a></p>
+                <p>GetAll <a href="/api/Directors">Directors</a></p>
+                <p>GetAll <a href="/api/MovieDirection">/api/MovieDirection</a></p>
+                <p>GetAll <a href="/api/Actors">/api/Actors</a></p>
+                <p>GetAll <a href="/api/MovieCasts">/api/MovieCasts</a></p>
+                <p>GetAll <a href="/api/Genres">/api/Genres</a></p>
+                <p>GetAll <a href="/api/MovieGenres">/api/MovieGenres</a></p>
+                <p>GetAll <a href="/api/Reviewers">/api/Reviewers</a></p>
+                <p>GetAll <a href="/api/Ratings">/api/Ratings</a></p>
               </body>
             </html>
             """,

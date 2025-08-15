@@ -15,7 +15,7 @@ chmod +x curl_tests_script_relations.sh
 sh ./curl_tests_script_relations.sh
 ```
 
-###### Then check new Record
+###### Then check new record
 ```sh
 http://localhost:5000/api/Movies/929/details
 
