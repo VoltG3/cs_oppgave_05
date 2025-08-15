@@ -93,7 +93,7 @@ public partial class Program
                 <p>Try <a href="/api/Genres">/api/Genres</a></p>
                 <p>Try <a href="/api/MovieGenres">/api/MovieGenres</a></p>
                 <p>Try <a href="/api/Reviewers">/api/Reviewers</a></p>
-                <p>Try <a href="/api/Ratings?movId=925&revId=9021">/api/Ratings</a></p>
+                <p>Try <a href="/api/Ratings">/api/Ratings</a></p>
               </body>
             </html>
             """,

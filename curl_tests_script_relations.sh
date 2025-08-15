@@ -58,7 +58,7 @@ echo ""
 
 echo ""  
 echo "###################################################################################"
-echo "#      CURL TEST 2 - RELATIONS - [ movie ] >> [ movie_genres ] << [ genres ]      #"
+echo "#      CURL TEST 2 - RELATIONS - [ movie ] →  [ movie_genres ] ← [ genres ]      #"
 echo "###################################################################################"
 echo ""
 
@@ -105,7 +105,7 @@ echo ""
 
 echo ""
 echo "################################################################################"
-echo "#      CURL TEST 3 - RELATIONS - [ movie ] >> [ movie_cast ] << [ actor ]      #"
+echo "#      CURL TEST 3 - RELATIONS - [ movie ] →  [ movie_cast ] ← [ actor ]      #"
 echo "################################################################################"
 echo ""
 
@@ -154,7 +154,7 @@ echo ""
 
 echo ""
 echo "###############################################################################"
-echo "#      CURL TEST 4 - RELATIONS - [ movie ] >> [ rating ] << [ reviewer ]      #"
+echo "#      CURL TEST 4 - RELATIONS - [ movie ] →  [ rating ] ← [ reviewer ]      #"
 echo "###############################################################################"
 echo ""
 
@@ -203,7 +203,7 @@ echo ""
 
 echo ""
 echo "########################################################################################"
-echo "#      CURL TEST 5 - RELATIONS - [ movie ] >> [ movie_direction ] << [ director ]      #"
+echo "#      CURL TEST 5 - RELATIONS - [ movie ] →  [ movie_direction ] ← [ director ]      #"
 echo "########################################################################################"
 echo ""
 
@@ -219,4 +219,33 @@ echo ""
 echo "GET [ movie_directions: movie-director ]"
 echo ""
 curl -X GET "http://localhost:5000/api/MovieDirection?dirId=224&movId=929" -H "Accept: application/json"
+echo ""
+
+echo ""
+echo "########################################################################################################################"
+echo "#      CURL TEST 6 - RELATIONS - [ movie ] ← [ movie_direction ] ← [ movie_genres ] ← [ movie_cast ] ← [ rating ]      #"
+echo "########################################################################################################################"
+echo ""
+
+echo ""
+echo "PATCH [ movie: movie_direction, movie_genresm movie_csat, rating ]"
+echo ""
+curl -X PATCH "http://localhost:5000/api/movies/929/details" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "movTitle": "_ovie_PACHED_929",
+    "movRelCountry": "NO",
+    "genres": [
+      { "genId": 1014, "genTitle": "_enre_PACHED_929" }
+    ],
+    "directors": [
+      { "dirId": 224, "dirFname": "_irFname_PATCHED_929", "dirLname": "_irLname_929" }
+    ],
+    "cast": [
+      { "actId": 125, "role": "_ole_929", "actFname": "_ctorFname_PATCH_929", "actLname": "_ctorLname_929" }
+    ],
+    "ratings": [
+      { "revId": 9021, "revStars": 4.8, "numOfRatings": 10 }
+    ]
+  }'
 echo ""

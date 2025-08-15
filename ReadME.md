@@ -1,5 +1,5 @@
 ### `C# Intermediate Oppgave 4` and `SQL Oppgave 4`
-###### C# / FC CORE 8/ CRUD / MYSQL / API / WEB SERVER / CURL TESTS / XUNIT TEST
+###### C# / FC CORE / NET 8/ CRUD / MYSQL / SQL MIGRATION / API / WEB SERVER / RestAPI / CURL TESTS / XUNIT TEST
 
 | Chaper                                                           |
 |:-----------------------------------------------------------------|
@@ -14,6 +14,29 @@
 | [Curl Tests - Relations](#curl-tests-relations)                  |
 | [Curl Tests - Options](#curl-tests-options)                      |                                           
 Best for test anyway - Linux / Docker / DBeaver
+
+###### Check OnLive condition
+```sh
+http://localhost:5000   
+curl http://localhost:5000 
+```
+###### Execute 'curl_tests_script_relations.sh'
+
+```sh
+chmod +x curl_tests_script_relations.sh
+sh ./curl_tests_script_relations.sh
+```
+
+###### Then check new Record
+```sh
+http://localhost:5000/api/Movies/929/details
+curl -X GET "http://localhost:5000/api/Movies/929/details" -H "Accept: application/json"
+````
+
+###### Run xUnit tests
+```sh
+dtest
+```
 
 ### Dependencies
 
@@ -56,18 +79,15 @@ dotnet add tests/cs_oppgave_05.UnitTests package Microsoft.Data.Sqlite --version
 echo 'alias dtest="dotnet test --settings tests/RunSettings.runsettings"' >> ~/.bashrc
 source ~/.bashrc
 
-# then run
-dtest
-
 # refresh it
 dotnet clean
 dotnet restore
 dotnet build
 dotnet test
-````
 
-## SQL Migration
-___
+# then run
+dtest
+````
 
 ### Initialize Docker MYSQL container
 ```sh
@@ -79,12 +99,6 @@ docker create
  -e MYSQL_PASSWORD=mysql
  -p 3309:3306
  mysql:8.0
-```
-
-### Check OnLive condition
-```sh
-http://localhost:5000   
-curl http://localhost:5000 
 ```
 
 ### DBeaver, if credentials are singular:
@@ -174,9 +188,6 @@ FLUSH PRIVILEGES;
 
 ![img](https://github.com/VoltG3/cs_oppgave_05/blob/master/02.png)
 
-## CRUD
-___
-
 #### If EF Core version crash
 ```sh
 dotnet remove package Microsoft.EntityFrameworkCore
@@ -185,15 +196,6 @@ dotnet add package Microsoft.EntityFrameworkCore --version 8.0.13
 
 #### Relation Diagram
 ![img](https://github.com/VoltG3/cs_oppgave_05/blob/master/01.png)
-
-## Curl Tests Relations
-___
-#### Execute 'cur_test_scripts.sh'
-!Imortant 'Run once!'
-```sh
-chmod +x curl_tests_script_relations.sh
-sh ./curl_tests_script_relations.sh
-```
 
 #### CURL TEST 1 - MASTER TABLE - MOVIE
 
@@ -249,7 +251,7 @@ curl -X GET "http://localhost:5000/api/Genres/1014" \
 echo ""
 ```
 
-#### CURL TEST 2 - RELATIONS - [ movie ] >> [ movie_genres ] << [ genres]
+#### CURL TEST 2 - RELATIONS - [ movie ] ➡️ [ movie_genres ] ⬅️ [ genres]
 
 ```sh
 echo ""
@@ -294,7 +296,7 @@ curl -X GET "http://localhost:5000/api/Actors/125" \
 echo ""
 ```
 
-#### CURL TEST 3 - RELATIONS - [ movie ] >> [ movie_cast ] << [ actor ]
+#### CURL TEST 3 - RELATIONS - [ movie ] ➡️ [ movie_cast ] ⬅️ [ actor ]
 
 ```sh
 echo ""
@@ -339,7 +341,7 @@ curl -X GET "http://localhost:5000/api/Reviewers/9021" \
 echo ""
 ```
 
-#### CURL TEST 4 - RELATIONS - [ movie ] >> [ rating ] << [ reviewer ]
+#### CURL TEST 4 - RELATIONS - [ movie ] ➡️ [ rating ] ⬅️ [ reviewer ]
 
 ```sh
 echo ""
@@ -384,7 +386,7 @@ curl -X GET "http://localhost:5000/api/Directors/224" \
 echo ""
 ```
 
-#### CURL TEST 5 - RELATIONS - [ movie ] >> [ movie_direction ] << [ director ]
+#### CURL TEST 5 - RELATIONS - [ movie ] ➡️ [ movie_direction ] ⬅️ [ director ]
 
 ```sh
 echo ""
@@ -402,11 +404,24 @@ curl -X GET "http://localhost:5000/api/MovieDirection?dirId=224&movId=929" -H "A
 echo ""
 ```
 
-## Curl Tests Options
-___
-#### Execute 'cur_test_scripts.sh'
-
+#### CURL TEST 6 - RELATIONS - [ movie ] ⬅️ [ movie_direction ] ⬅️ [ movie_genres ] ⬅️ [ movie_cast ] ⬅️ [ rating ]
 ```sh
-chmod +x curl_tests_script_options.sh
-sh ./curl_tests_script_options.sh
+curl -X PATCH "http://localhost:5000/api/movies/929/details" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "movTitle": "_ovie_PACHED_929",
+    "movRelCountry": "NO",
+    "genres": [
+      { "genId": 1014, "genTitle": "_enre_PACHED_929" }
+    ],
+    "directors": [
+      { "dirId": 224, "dirFname": "_irFname_PATCHED_929", "dirLname": "_irLname_929" }
+    ],
+    "cast": [
+      { "actId": 125, "role": "_ole_929", "actFname": "_ctorFname_PATCH_929", "actLname": "_ctorLname_929" }
+    ],
+    "ratings": [
+      { "revId": 9021, "revStars": 4.8, "numOfRatings": 10 }
+    ]
+  }'
 ```

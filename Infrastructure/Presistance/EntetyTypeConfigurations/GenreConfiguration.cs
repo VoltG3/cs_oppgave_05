@@ -12,7 +12,7 @@ namespace cs_oppgave_05.Infrastructure.Presistance.EntetyTypeConfigurations
             b.HasKey(g => g.GenId);
 
             b.Property(g => g.GenTitle).IsRequired().HasMaxLength(100);
-            b.HasIndex(g => g.GenTitle).IsUnique(); // ja vēlies unikālu nosaukumu
+            b.HasIndex(g => g.GenTitle).IsUnique(); 
         }
     }
 }

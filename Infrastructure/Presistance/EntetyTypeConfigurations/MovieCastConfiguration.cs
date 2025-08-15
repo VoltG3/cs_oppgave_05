@@ -24,4 +24,5 @@ namespace cs_oppgave_05.Infrastructure.Presistance.EntetyTypeConfigurations
                 .OnDelete(DeleteBehavior.Cascade);
         }
     }
+    
 }
