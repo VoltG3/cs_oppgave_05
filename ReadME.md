@@ -66,12 +66,10 @@ dotnet build
 dotnet test
 ````
 
-![img](https://github.com/VoltG3/cs_oppgave_05/blob/master/02.png)
-
 ## SQL Migration
 ___
 
-### Init Docker MYSQL container
+### Initialize Docker MYSQL container
 ```sh
 docker create
  --name mysql_movies
@@ -173,6 +171,9 @@ FLUSH PRIVILEGES;
 
 </Project>
 ```
+
+![img](https://github.com/VoltG3/cs_oppgave_05/blob/master/02.png)
+
 ## CRUD
 ___
 
