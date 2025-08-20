@@ -4,29 +4,36 @@
 ## Version CS_OPPGAVE_05_V4
 #### Compose db & api
 How to run it:
-**FIRST**
+
+___FIRST___
+```sh
 `.env.dbase` and `appsettings.json` excluded from in .gitignore, so only the port needs to be overwritten
-Check is port-passable:
+```
+#### Check is port-passable:
 ```sh
 ss -H -ltn 'sport = :3309' | grep -q . && echo busy || echo passable
 ```
 Verify port in the `.env.dbase`
 Verify port in the `appsettings.json`
-Compose db
+
+#### Compose db
 ```sh
 docker compose --env-file .env.dbase up -d db
 docker compose --env-file .env.dbase ps
 ```
-**SECOND**
-Run IDE
 
-**THIRD**
-Compose db and api
+___SECOND___
+```sh
+Run IDE
+```
+
+___THIRD___
+#### Compose db and api
 ```sh
 docker compose --env-file .env.dbase up -d --build db api
 ```
 The API will listenig at `http://localhost:8080/`
-Quick Test:
+#### Quick Test:
 ```sh
 curl -sS "http://localhost:8080/api/Movies?page=1&pageSize=50" -H "Accept: application/json" | jq .
 ```
@@ -34,8 +41,6 @@ Curl requests: for colored and better json output `sudo snap install jq`
 ![img](https://github.com/VoltG3/cs_oppgave_05/blob/master/04.png)
 
 ## Version CS_OPPGAVE_05_V3
-## Version CS_OPPGAVE_05_V2
-## Version CS_OPPGAVE_05_V1
 
 ###### Check OnLive condition
 ```sh
