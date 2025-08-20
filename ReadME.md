@@ -29,20 +29,59 @@ Run IDE
 ```
 
 ___THIRD___
-#### Compose db and api
+#### Compose api
 ```sh
 docker compose --env-file .env.dbase up -d --build db api
+docker compose --env-file .env.dbase ps
 ```
-The API will listenig at `http://localhost:8080/`
+The API will listening at `http://localhost:8080/`
 #### Quick Test:
 ```sh
 curl -sS "http://localhost:8080/api/Movies?page=1&pageSize=50" -H "Accept: application/json" | jq .
 ```
+
+#### Stop and remove containers
+```sh 
+docker stop cs_oppgave_05-db-1 cs_oppgave_05-api-1
+docker rm cs_oppgave_05-db-1 cs_oppgave_05-api-1
+```
+
 Curl requests: for colored and better json output `sudo snap install jq`
 ![img](https://github.com/VoltG3/cs_oppgave_05/blob/master/04.png)
 
-## Version CS_OPPGAVE_05_V3
+## Diag mini-kit
 
+#### Show the last 50 API log lines and filter for “listening on” to confirm the bound URL/port
+```sh
+docker compose logs --tail=50 api | grep -i "listening on"
+```
+
+#### Show the last 100 lines of API logs
+```sh
+docker compose logs --tail=100 api
+```
+
+#### Show the process/arguments used to start the container (entry command)
+```sh
+docker inspect cs_oppgave_05-api-1 --format '{{.Path}} {{join .Args " "}}'
+```
+
+#### Quick state summary: status, exit code, and any error message
+```sh
+docker inspect cs_oppgave_05-api-1 --format '{{.State.Status}} {{.State.ExitCode}} {{.State.Error}}'
+```
+
+#### Is the API listening *inside* the container?
+```sh
+docker compose exec api bash -lc 'curl -sS http://localhost:8080/ || true'
+```
+
+#### What Entrypoint is baked into the image?
+```sh
+docker inspect cs_oppgave_05-api-1 --format '{{json .Config.Entrypoint}}'
+```
+
+## Version CS_OPPGAVE_05_V3
 ###### Check OnLive condition
 ```sh
 http://localhost:5000   
