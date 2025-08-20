@@ -14,3 +14,11 @@ TestResults/
 *.cache
 .DS_Store
 Thumbs.db
+
+**/bin/
+**/obj/
+**/.vs/
+**/.idea/
+**/*.user
+**/*.suo
+**/*.idea

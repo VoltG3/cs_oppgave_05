@@ -1,17 +1,17 @@
 services:
   db:
     image: mysql:8.0
-    container_name: ${CONTAINER_NAME}
-    env_file: .env.dbase
+    env_file:
+      - .env.dbase
     environment:
-      - TZ=${TZ}
+      TZ: ${TZ:-Europe/Oslo}
     command: >
       --character-set-server=utf8mb4
       --collation-server=utf8mb4_0900_ai_ci
-      --default-time-zone=${TZ}
+      --default-time-zone=${TZ:-Europe/Oslo}
       --skip-log-bin
     ports:
-      - "${MYSQL_PORT_HOST}:3306"
+      - "${MYSQL_PORT_HOST:-3309}:3306"
     volumes:
       - movies_dbdata:/var/lib/mysql
     healthcheck:
@@ -20,7 +20,20 @@ services:
       timeout: 3s
       retries: 20
 
+  api:
+    build:
+      context: .              # build from the current directory
+      dockerfile: Dockerfile  
+    env_file:
+      - .env.dbase
+    environment:
+      ASPNETCORE_URLS: http://+:8080
+      ConnectionStrings__Default: "Server=db;Port=3306;Database=${MYSQL_DATABASE};User=${MYSQL_USER};Password=${MYSQL_PASSWORD};SslMode=None"
+    depends_on:
+      - db
+    ports:
+      - "8080:8080"
+
 volumes:
   movies_dbdata: {}
-
- 
+  
