@@ -6,9 +6,10 @@
 How to run it:
 
 ___FIRST___
-```sh
-`.env.dbase` and `appsettings.json` excluded from in .gitignore, so only the port needs to be overwritten
-```
+
+`.env.dbase` and `appsettings.json` excluded from .gitignore, 
+so only the port needs to be overwritten
+
 #### Check is port-passable:
 ```sh
 ss -H -ltn 'sport = :3309' | grep -q . && echo busy || echo passable
