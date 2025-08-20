@@ -14,8 +14,8 @@ so only the port needs to be overwritten
 ```sh
 ss -H -ltn 'sport = :3309' | grep -q . && echo busy || echo passable
 ```
-Verify port in the `.env.dbase`
-Verify port in the `appsettings.json`
+- Verify port in the `.env.dbase`
+- Verify port in the `appsettings.json`
 
 #### Compose db
 ```sh
