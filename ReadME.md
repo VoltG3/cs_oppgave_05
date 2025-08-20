@@ -1,6 +1,43 @@
 ### `C# Intermediate Oppgave 4` and `SQL Oppgave 4`
-###### C# / FC CORE / NET 8/ CRUD / MYSQL / SQL MIGRATION / API / WEB SERVER / RestAPI / CURL TESTS / XUNIT TEST
+###### C# / FC CORE / NET 8/ CRUD / MYSQL / SQL MIGRATION / API / WEB SERVER / RestAPI / CURL TESTS / XUNIT TEST / COMPOSE
 
+## Version CS_OPPGAVE_04_V4
+___
+#### .env.dbase is not in .gitignore, so only the port address needs to be overwritten; command to check if the port is free:
+```sh
+ss -H -ltn 'sport = :3309' | grep -q . && echo busy || echo passable
+```
+
+#### API & DB container: create & check
+```sh
+docker compose --env-file .env.dbase up -d --build db api
+docker compose --env-file .env.dbase ps
+
+docker compose logs --tail=50 api | grep -i "listening on"
+docker port $(docker compose ps -q api)
+curl -v http://localhost:8080/
+```
+
+#### DB container: create & check
+```sh
+docker compose --env-file .env.dbase up -d db
+docker compose --env-file .env.dbase ps
+```
+
+#### Listening om port:
+```sh
+http://localhost:8080/
+````
+
+#### Quick curl test:
+For colored and better json output `sudo snap install jq`
+```sh
+curl -sS "http://localhost:8080/api/Movies?page=1&pageSize=50" -H "Accept: application/json" | jq .
+```
+![img](https://github.com/VoltG3/cs_oppgave_05/blob/master/04.png)
+
+## Version CS_OPPGAVE_05_V3
+___
 ###### Check OnLive condition
 ```sh
 http://localhost:5000   
