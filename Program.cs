@@ -17,6 +17,7 @@ public partial class Program
 {
     static void Main(string[] args)
     {
+        
         var builder = WebApplication.CreateBuilder(args);
         var connectionString = builder.Configuration.GetConnectionString("Default")
                                ?? throw new InvalidOperationException("Connection string 'Default' not found.");
