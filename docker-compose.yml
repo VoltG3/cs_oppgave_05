@@ -22,18 +22,33 @@ services:
 
   api:
     build:
-      context: .              # build from the current directory
-      dockerfile: Dockerfile  
+      context: .
+      dockerfile: Dockerfile
     env_file:
       - .env.dbase
     environment:
       ASPNETCORE_URLS: http://+:8080
       ConnectionStrings__Default: "Server=db;Port=3306;Database=${MYSQL_DATABASE};User=${MYSQL_USER};Password=${MYSQL_PASSWORD};SslMode=None"
     depends_on:
-      - db
+      db:
+        condition: service_healthy
     ports:
       - "8080:8080"
-   
+
+  dev:
+    image: nixos/nix:2.22.1
+    container_name: cs_oppgave_05-nix-dev
+    working_dir: /work
+    environment:
+      NIX_CONFIG: "experimental-features = nix-command flakes"
+    volumes:
+      - .:/work
+      - nix-store:/nix
+      - /var/run/docker.sock:/var/run/docker.sock
+    entrypoint: [ "bash","-lc","git config --global --add safe.directory /work || true; exec sleep infinity" ]
+
 volumes:
   movies_dbdata: {}
-  
+  nix-store: {}
+
+# Validation: docker compose config
