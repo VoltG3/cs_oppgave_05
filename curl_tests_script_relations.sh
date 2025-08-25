@@ -228,7 +228,7 @@ echo "##########################################################################
 echo ""
 
 echo ""
-echo "PATCH [ movie: movie_direction, movie_genresm movie_csat, rating ]"
+echo "PATCH [ movie: 929 ]"
 echo ""
 curl -X PATCH "http://localhost:5000/api/movies/929/details" \
   -H "Content-Type: application/json" \
@@ -248,4 +248,10 @@ curl -X PATCH "http://localhost:5000/api/movies/929/details" \
       { "revId": 9021, "revStars": 4.8, "numOfRatings": 10 }
     ]
   }'
+echo ""
+
+echo ""
+echo "GET [ movie - 929 ]"
+echo ""
+curl -X GET "http://localhost:5000/api/movies/929/details" -H "Accept: application/json"
 echo ""
