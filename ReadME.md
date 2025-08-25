@@ -1,13 +1,13 @@
 ### `C# Intermediate Oppgave 4` and `SQL Oppgave 4`
 ###### C# / FC CORE / NET 8/ CRUD / MYSQL / SQL MIGRATION / API / WEB SERVER / RestAPI / CURL TESTS / XUNIT TEST / COMPOSE
 
-| Tag              | Description                                                              |
-|:-----------------|:-------------------------------------------------------------------------|
-| cs_oppgave_05_V1 | [Database schema & SQL scripts (migrations, seed)](#sql-migration)       |
-| cs_oppgave_05_V2 | [Minimal web host & health check page](#web-server)                      |
-| cs_oppgave_05_V3 | [REST API CRUD for Movies + relations and curl tests](#crud)             |
-|                  | [Automated tests with xUnit (unit/integration)](#xunit-tests)            |
-| cs_oppgave_05_V4 | [Docker Compose setup for MySQL + API](#compose-db-&-api)                |
+| Tag              | Description                                                        |
+|:-----------------|:-------------------------------------------------------------------|
+| cs_oppgave_05_V1 | [Database schema & SQL scripts (migrations, seed)](#sql-migration) |
+| cs_oppgave_05_V2 | [Minimal web host & health check page](#web-server)                |
+| cs_oppgave_05_V3 | [REST API CRUD for Movies + relations and curl tests](#crud)       |
+|                  | [Automated tests with xUnit (unit/integration)](#xunit-tests)      |
+| cs_oppgave_05_V4 | [Docker Compose setup for MySQL + API](#compose-db-and-api)        |
 
 ## IaC
 Todo
@@ -18,7 +18,7 @@ Todo
 ## Nix
 InProgress
 
-## Compose DB & API
+## Compose DB and API
 **Goal:** Spin up the MySQL database and the API with Docker Compose (using `.env.dbase`)
 
 > **Ports & config**
@@ -67,8 +67,9 @@ docker rm cs_oppgave_05-db-1 cs_oppgave_05-api-1
 
 For colored/pretty JSON, install jq:
 ```sh
-sudo snap install jq   # or: sudo apt-get install jq
+sudo snap install jq
 ```
+###### jq output in terminal
 ![img](https://github.com/VoltG3/cs_oppgave_05/blob/master/_doc/a_jq.png)
 
 ## xUnit tests
@@ -129,16 +130,14 @@ curl -X GET "http://localhost:5000/api/Movies/929/details" -H "Accept: applicati
 #### Request Reference
 All test-specific `curl` requests are listed here: [cURL Request Guide](https://github.com/VoltG3/cs_oppgave_05/blob/master/_doc/curl_tests.md)
 
-#### Relations Diagram
-![img](https://github.com/VoltG3/cs_oppgave_05/blob/master/_doc/a_migration.png)
+###### Relations Diagram
+![img](https://github.com/VoltG3/cs_oppgave_05/blob/master/_doc/a_diagram.png)
 
 ## Web Server
 **Goal:** Run the app as a web server and confirm it’s alive at `http://localhost:5000`.
-![img](https://github.com/VoltG3/cs_oppgave_05/blob/master/_doc/a_web.png)
 
 ## SQL Migration
 **Goal:** Manually create a MySQL database container and apply SQL scripts.
-![img](https://github.com/VoltG3/cs_oppgave_05/blob/master/_doc/a_diagram.png)
 
 ### Start the MySQL container
 ```sh
@@ -159,4 +158,4 @@ FLUSH PRIVILEGES;
 ```
 
 ###### SQL Migration
-![img](https://github.com/VoltG3/cs_oppgave_05/blob/master/_doc/a_diagram.png)
+![img](https://github.com/VoltG3/cs_oppgave_05/blob/master/_doc/a_migration.png)
