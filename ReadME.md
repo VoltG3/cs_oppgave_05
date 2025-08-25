@@ -70,7 +70,7 @@ For colored/pretty JSON, install jq:
 sudo snap install jq
 ```
 ###### jq output in terminal
-![img](https://github.com/VoltG3/cs_oppgave_05/blob/master/_doc/a_jq.png)
+![img](https://github.com/VoltG3/cs_oppgave_05/blob/master/_doc/a_jqterminal.png)
 
 ## xUnit tests
 **Goal:** Verify domain logic, EF Core mappings, and API controllers end-to-end (CRUD, validation, error handling) with fast, repeatable xUnit unit/integration tests to prevent regressions.
