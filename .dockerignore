@@ -1,0 +1,24 @@
+# Git & Compose
+.git
+.gitignore
+docker-compose.yml
+.env*
+
+# Build artefakti
+**/bin/
+**/obj/
+**/TestResults/
+.out-tests
+.tmp
+_tmp
+
+# IDE
+.vscode
+.idea
+_ReSharper.Caches/
+
+# Temporary journals
+*.log
+*.tmp
+*.bak
+*.swp

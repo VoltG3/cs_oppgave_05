@@ -1,41 +1,30 @@
-bin/
-obj/
-/packages/
-riderModule.iml
-/_ReSharper.Caches/
-TestResults/
+# .NET build output
+**/bin/
+**/obj/
+**/TestResults/
+
+# IDE / Rider / VS Code
 .idea/
+.vscode/
+_ReSharper.Caches/
 *.sln.iml
 *.DotSettings.user
+
+# User local files
+*.user
+*.suo
+*.userprefs
+
+# Temporary logs
 *.log
 *.tmp
 *.bak
 *.pid
 *.cache
+
+# OS junk
 .DS_Store
 Thumbs.db
 
-**/bin/
-**/obj/
-**/.vs/
-**/.idea/
-**/*.user
-**/*.suo
-**/*.idea
-
-.git
-.gitignore
-Dockerfile
-docker-compose.yml
-.env*
-bin
-obj
-_tmp
-.tmp
-.out-tests
-.vscode
-.idea
-*.user
-*.suo
-*.swp
-tests/
+# Local packages/ folder
+packages/
