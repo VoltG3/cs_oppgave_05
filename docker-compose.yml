@@ -41,11 +41,12 @@ services:
     working_dir: /work
     environment:
       NIX_CONFIG: "experimental-features = nix-command flakes"
+      TMPDIR: /work/.tmp
     volumes:
       - .:/work
       - nix-store:/nix
       - /var/run/docker.sock:/var/run/docker.sock
-    entrypoint: [ "bash","-lc","git config --global --add safe.directory /work || true; exec sleep infinity" ]
+    entrypoint: [ "bash","-lc","mkdir -p /work/.tmp && chmod 1777 /work/.tmp; git config --global --add safe.directory /work || true; exec sleep infinity" ]
 
 volumes:
   movies_dbdata: {}
