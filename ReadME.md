@@ -8,41 +8,32 @@
 ## Nginx
 <p style="color: red;">TODO</p>
 
+## Nix
+<p style="color: red;">TODO</p>
+
 ## Compose DB & API
 <p style="color: red;">INTRO TODO</p>
+
 > `.env.dbase` and `appsettings.json` excluded from .gitignore, so only the port needs to be overwritten
+> - Verify port in the `.env.dbase`
+> - Verify port in the `appsettings.json`
+> 
+> How to run it:
+> First compose db `docker compose --env-file .env.dbase up -d db`
+> Second run IDE
+> Third: compose api `docker compose --env-file .env.dbase up -d --build db api`
+> 
+> The API will listening at `http://localhost:8080/`
 
-How to run it:
+#### Quick GET Test:
+```sh
+curl -sS "http://localhost:8080/api/Movies?page=1&pageSize=50" -H "Accept: application/json" | jq .
+http://localhost:8080/api/Movies?page=1&pageSize=50
+```
 
-___FIRST___
 #### Check is port-passable:
 ```sh
 ss -H -ltn 'sport = :3309' | grep -q . && echo busy || echo passable
-```
-- Verify port in the `.env.dbase`
-- Verify port in the `appsettings.json`
-
-#### Compose db
-```sh
-docker compose --env-file .env.dbase up -d db
-docker compose --env-file .env.dbase ps
-```
-
-___SECOND___
-```sh
-Run IDE
-```
-
-___THIRD___
-#### Compose api
-```sh
-docker compose --env-file .env.dbase up -d --build db api
-docker compose --env-file .env.dbase ps
-```
-The API will listening at `http://localhost:8080/`
-#### Quick Test:
-```sh
-curl -sS "http://localhost:8080/api/Movies?page=1&pageSize=50" -H "Accept: application/json" | jq .
 ```
 
 [Diagnostic minikit](https://github.com/VoltG3/cs_oppgave_05/blob/master/_doc/diag_mkit.md)
