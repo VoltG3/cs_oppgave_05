@@ -187,7 +187,7 @@ All test-specific `curl` requests are listed here: [cURL Request Guide](https://
 ![img](https://github.com/VoltG3/cs_oppgave_05/blob/master/_doc/a_diagram.png)
 
 ###### Simple Frontend
-![img](https://github.com/VoltG3/cs_oppgave_05/blob/master/_doc/a_frontend.png)
+![img](https://github.com/VoltG3/cs_oppgave_05/blob/master/_doc/a_fend.png)
 
 ## Web Server
 **Goal:** Run the app as a web server and confirm it’s alive at `http://localhost:5000`.
