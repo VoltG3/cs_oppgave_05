@@ -16,15 +16,15 @@
 
 ### Nginx
 - **What:** fast web server / reverse proxy.
+- **What:** fast web server / reverse proxy.
 - **Does:** TLS termination + redirects, route / (SPA) and /api (.NET), compression/cache, load-balancing, limits, security headers.
 - **Why:** single domain + HTTPS and a safe front door to services.
 - **Use when:** production or multi-app under one domain.
-- **Skip when:** local dev with one API on http://localhost:8080.
+- **Skip when:** local dev with one API on http://localhost:8080
 
-
-- IaC server: safe, repeatable infra changes from Git.
-- Nix devcontainer: identical dev env; open repo and code. 
-- Nginx: HTTPS + routing + caching/balancing in front of SPA/API.
+> IaC server: safe, repeatable infra changes from Git.
+> Nix devcontainer: identical dev env; open repo and code. 
+> Nginx: HTTPS + routing + caching/balancing in front of SPA/API.
 
 #### Simple diagram
 ```sh
