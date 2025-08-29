@@ -9,8 +9,8 @@
 |                  | [Automated tests with xUnit (unit/integration)](#xunit-tests)      |
 | cs_oppgave_05_V4 | [Docker Compose setup for MySQL + API](#compose-db-and-api)        |
 | cs_oppgave_05_V5 | [Nix flake dev shell & reproducible apps (dev/test/migrate)](#nix) |
-|                  | [Nginx - ToDo] |
-|                  | [OaC - ToDo] |
+|                  | [Nginx - ToDo](#nginx)                                             |
+|                  | [IaC - ToDo](#iac)                                                 |
 
 
 - IaC
