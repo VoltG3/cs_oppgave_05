@@ -1,5 +1,5 @@
 ### `C# Intermediate Oppgave 4` and `SQL Oppgave 4`
-###### C# / FC CORE / NET 8/ CRUD / MYSQL / SQL MIGRATION / API / WEB SERVER / RestAPI / CURL TESTS / XUNIT TEST / COMPOSE
+###### C# / FC CORE / NET 8/ CRUD / MYSQL / SQL MIGRATION / API / WEB SERVER / RestAPI / CURL TESTS / XUNIT TEST / COMPOSE / Nix / NGINX / IAC
 
 | Tag              | Description                                                        |
 |:-----------------|:-------------------------------------------------------------------|
@@ -12,13 +12,8 @@
 |                  | [Nginx - ToDo](#nginx)                                             |
 |                  | [IaC - ToDo](#iac)                                                 |
 
-
-- IaC
-- Nginx
-- Nix
-- Compose DB and API
-
-Todo >> *.proj (examples)
+[About: Compose / Db / Api / Nix / Nginx / IaC ](https://github.com/VoltG3/cs_oppgave_05/blob/master/_doc/about.md)
+[cs_oppgave_05.csproj working configuration example](https://github.com/VoltG3/cs_oppgave_05/blob/master/_doc/conf_cspproj.md)
 
 ## IaC
 Todo
