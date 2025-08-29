@@ -22,9 +22,9 @@
 - **Use when:** production or multi-app under one domain.
 - **Skip when:** local dev with one API on http://localhost:8080
 
-> IaC server: safe, repeatable infra changes from Git.
-> Nix devcontainer: identical dev env; open repo and code. 
-> Nginx: HTTPS + routing + caching/balancing in front of SPA/API.
+> - IaC server: safe, repeatable infra changes from Git.
+> - Nix devcontainer: identical dev env; open repo and code. 
+> - Nginx: HTTPS + routing + caching/balancing in front of SPA/API.
 
 #### Simple diagram
 ```sh
