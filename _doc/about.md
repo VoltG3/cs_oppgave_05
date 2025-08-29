@@ -1,25 +1,25 @@
 
 
 #### iac-server
-**What:** CI/CD runner that applies infra from Git (Terraform/Ansible/Pulumi).
-**Does:** pulls PR/merge, runs plan/apply, keeps state (e.g., S3+DynamoDB / Terraform Cloud), stores secrets, supports manual approvals.
-**Why:** versioned, repeatable, auditable infra (not “clicks in console”).
-**Use when:** teams, multiple envs (dev/stage/prod), cloud infra.
-**Skip when:** tiny hobby project on one box; run IaC locally.
+- **What:** CI/CD runner that applies infra from Git (Terraform/Ansible/Pulumi).
+- **Does:** pulls PR/merge, runs plan/apply, keeps state (e.g., S3+DynamoDB / Terraform Cloud), stores secrets, supports manual approvals.
+- **Why:** versioned, repeatable, auditable infra (not “clicks in console”).
+- **Use when:** teams, multiple envs (dev/stage/prod), cloud infra.
+- **Skip when:** tiny hobby project on one box; run IaC locally.
 
 ### nix-devcontainer
-**What:** dev environment in a container; tooling pinned by Nix.
-**Does:** consistent toolchain (SDK/CLI/DB clients), removes “works on my machine”, fast onboarding (open repo → ready).
-**Why:** reproducible, stable dev across OS/machines.
-**Use when:** teams, polyglot stacks, strict versions.
-**Skip when:** simple solo project with local tool installs.
+- **What:** dev environment in a container; tooling pinned by Nix.
+- **Does:** consistent toolchain (SDK/CLI/DB clients), removes “works on my machine”, fast onboarding (open repo → ready).
+- **Why:** reproducible, stable dev across OS/machines.
+- **Use when:** teams, polyglot stacks, strict versions.
+- **Skip when:** simple solo project with local tool installs.
 
 ### Nginx
-**What:** fast web server / reverse proxy.
-**Does:** TLS termination + redirects, route / (SPA) and /api (.NET), compression/cache, load-balancing, limits, security headers.
-**Why:** single domain + HTTPS and a safe front door to services.
-**Use when:** production or multi-app under one domain.
-**Skip when:** local dev with one API on http://localhost:8080.
+- **What:** fast web server / reverse proxy.
+- **Does:** TLS termination + redirects, route / (SPA) and /api (.NET), compression/cache, load-balancing, limits, security headers.
+- **Why:** single domain + HTTPS and a safe front door to services.
+- **Use when:** production or multi-app under one domain.
+- **Skip when:** local dev with one API on http://localhost:8080.
 
 
 - IaC server: safe, repeatable infra changes from Git.
