@@ -8,6 +8,17 @@
 | cs_oppgave_05_V3 | [REST API CRUD for Movies + relations and curl tests](#crud)       |
 |                  | [Automated tests with xUnit (unit/integration)](#xunit-tests)      |
 | cs_oppgave_05_V4 | [Docker Compose setup for MySQL + API](#compose-db-and-api)        |
+| cs_oppgave_05_V5 | [Nix flake dev shell & reproducible apps (dev/test/migrate)](#nix) |
+|                  | [Nginx - ToDo] |
+|                  | [OaC - ToDo] |
+
+
+- IaC
+- Nginx
+- Nix
+- Compose DB and API
+
+Todo >> *.proj (examples)
 
 ## IaC
 Todo
@@ -16,7 +27,63 @@ Todo
 Todo
 
 ## Nix
-InProgress
+**Goal:** Quickly spin up a Nix development environment inside a container, run .NET tests via a flake app, and verify tooling with a mini test kit.
+#### Prerequisites
+- 1. Compose db
+```sh
+docker compose --env-file .env.dbase up -d db
+```
+- 2. Start IDE
+- 3. Compose API
+```sh
+docker compose --env-file .env.dbase up -d --build db api
+````
+
+#### Quick Start from project root `working path`
+- Start existing containers (if already created)
+```sh
+docker start cs_oppgave_05-nix-dev cs_oppgave_05-api-1 cs_oppgave_05-db-1
+```
+- Or build and start the dev service
+```sh
+docker compose up -d --build dev
+```
+
+#### Enter the dev container
+```sh 
+docker exec -it cs_oppgave_05-nix-dev bash
+# In container:
+cd /work
+nix develop -c bash
+```
+
+#### Run tests via the flake app `dtest`
+```sh
+nix run .#dtest
+# or equivalent:
+# nix develop -c dtest
+```
+
+#### "Refresh" / Re‑initialize in the container (if the flake is out of sync)
+**Warning:** Deleting flake.lock unlocks versions — do this only when you need to realign dependencies.
+```sh
+cd /work
+rm -f flake.lock
+nix flake metadata # sanity check that the flake is readable
+nix develop -c bash
+dotnet --info 
+```
+
+#### Additional check
+```sh
+rm -f flake.lock
+nix flake show # should list apps: default, dtest, etc.
+nix run . # if default = dtest, tests will run
+nix run .#dtest
+nix develop -c dotnet --info
+```
+
+[Mini test kit](https://github.com/VoltG3/cs_oppgave_05/blob/master/_doc/diag_testkit.md)
 
 ## Compose DB and API
 **Goal:** Spin up the MySQL database and the API with Docker Compose (using `.env.dbase`)
