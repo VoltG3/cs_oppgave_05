@@ -23,28 +23,17 @@ Todo
 
 ## Nix
 **Goal:** Quickly spin up a Nix development environment inside a container, run .NET tests via a flake app, and verify tooling with a mini test kit.
-#### Prerequisites
-- 1. Compose db
-```sh
-docker compose --env-file .env.dbase up -d db
-```
-- 2. Start IDE
-- 3. Compose API
-```sh
-docker compose --env-file .env.dbase up -d --build db api
-````
-
-#### Quick Start from project root `working path`
-- Start existing containers (if already created)
-```sh
-docker start cs_oppgave_05-nix-dev cs_oppgave_05-api-1 cs_oppgave_05-db-1
-```
-- Or build and start the dev service
+#### Build NiX container from project root `working path`
 ```sh
 docker compose up -d --build dev
 ```
 
-#### Enter the dev container
+#### Run all containers
+```sh 
+docker start cs_oppgave_05-db-1 cs_oppgave_05-api-1 cs_oppgave_05-nix-dev
+````
+
+#### Enter the dev container (Before that stop running your IDE)
 ```sh 
 docker exec -it cs_oppgave_05-nix-dev bash
 # In container:
@@ -77,8 +66,10 @@ nix run . # if default = dtest, tests will run
 nix run .#dtest
 nix develop -c dotnet --info
 ```
-
 [Mini test kit](https://github.com/VoltG3/cs_oppgave_05/blob/master/_doc/diag_testkit.md)
+
+##### Nix tests
+![img](https://github.com/VoltG3/cs_oppgave_05/blob/master/_doc/a_nixtest.png)
 
 ## Compose DB and API
 **Goal:** Spin up the MySQL database and the API with Docker Compose (using `.env.dbase`)
